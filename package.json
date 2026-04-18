@@ -1,0 +1,41 @@
+{
+  "name": "kidsui",
+  "version": "0.1.0",
+  "description": "A playful, animation-rich UI component library for kids — built with Web Components and Motion",
+  "type": "module",
+  "main": "./dist/kidsui.umd.cjs",
+  "module": "./dist/kidsui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/kidsui.js",
+      "require": "./dist/kidsui.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "kids",
+    "ui",
+    "web-components",
+    "custom-elements",
+    "animation",
+    "motion"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "motion": "^12.38.0"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vite": "^8.0.8"
+  }
+}
