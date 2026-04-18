@@ -101,6 +101,146 @@
     </div>
   </section>
 
+  <!-- Toggles -->
+  <section>
+    <h2>kids-toggle</h2>
+    <div class="row">
+      <kids-toggle variant="primary" checked>Sound</kids-toggle>
+      <kids-toggle variant="secondary">Music</kids-toggle>
+      <kids-toggle variant="accent" size="lg" checked>Dark Mode</kids-toggle>
+      <kids-toggle variant="primary" size="sm">Tiny</kids-toggle>
+      <kids-toggle disabled>Disabled</kids-toggle>
+    </div>
+  </section>
+
+  <!-- Inputs -->
+  <section>
+    <h2>kids-input</h2>
+    <div class="row" style="flex-direction: column; align-items: stretch;">
+      <kids-input placeholder="What's your name?" size="md"></kids-input>
+      <kids-input placeholder="Type something..." variant="outlined" size="md"></kids-input>
+      <div class="row">
+        <kids-input placeholder="Small" size="sm"></kids-input>
+        <kids-input placeholder="Large!" size="lg"></kids-input>
+      </div>
+      <kids-input placeholder="Can't touch this" disabled></kids-input>
+    </div>
+  </section>
+
+  <!-- Progress -->
+  <section>
+    <h2>kids-progress</h2>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <kids-progress value="75" variant="primary" size="md" label></kids-progress>
+      <kids-progress value="45" variant="secondary" size="lg" striped label></kids-progress>
+      <kids-progress value="90" variant="accent" size="md"></kids-progress>
+      <kids-progress value="30" variant="warning" size="sm"></kids-progress>
+      <kids-progress value="60" variant="info" size="md" striped></kids-progress>
+    </div>
+  </section>
+
+  <!-- Avatars -->
+  <section>
+    <h2>kids-avatar</h2>
+    <div class="row">
+      <kids-avatar variant="primary" size="sm">AB</kids-avatar>
+      <kids-avatar variant="secondary">CD</kids-avatar>
+      <kids-avatar variant="accent" size="lg">EF</kids-avatar>
+      <kids-avatar variant="warning" size="xl">GH</kids-avatar>
+      <kids-avatar variant="info">IJ</kids-avatar>
+    </div>
+  </section>
+
+  <!-- Alerts -->
+  <section>
+    <h2>kids-alert</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <kids-alert variant="info">This is an informational message for kids!</kids-alert>
+      <kids-alert variant="success">Great job! You completed the task!</kids-alert>
+      <kids-alert variant="warning" dismissible>Watch out! This one can be dismissed.</kids-alert>
+      <kids-alert variant="error" dismissible>Oops! Something went wrong.</kids-alert>
+    </div>
+  </section>
+
+  <!-- Dividers -->
+  <section>
+    <h2>kids-divider</h2>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <kids-divider color="primary"></kids-divider>
+      <kids-divider variant="dashed" color="secondary">or</kids-divider>
+      <kids-divider variant="dotted" color="accent">Section</kids-divider>
+      <kids-divider variant="wavy" color="warning"></kids-divider>
+    </div>
+  </section>
+
+  <!-- Chips -->
+  <section>
+    <h2>kids-chip</h2>
+    <div class="row">
+      <kids-chip variant="primary">Science</kids-chip>
+      <kids-chip variant="secondary" selected>Math</kids-chip>
+      <kids-chip variant="accent" removable>Art</kids-chip>
+      <kids-chip variant="warning" removable>Music</kids-chip>
+      <kids-chip variant="info" size="sm">Small</kids-chip>
+    </div>
+  </section>
+
+  <!-- Tooltips -->
+  <section>
+    <h2>kids-tooltip</h2>
+    <div class="row">
+      <kids-tooltip text="I'm on top!" position="top">
+        <kids-button variant="primary" size="sm">Hover me (top)</kids-button>
+      </kids-tooltip>
+      <kids-tooltip text="Down here!" position="bottom" variant="primary">
+        <kids-button variant="secondary" size="sm">Hover me (bottom)</kids-button>
+      </kids-tooltip>
+      <kids-tooltip text="To the right!" position="right" variant="secondary">
+        <kids-button variant="accent" size="sm">Hover me (right)</kids-button>
+      </kids-tooltip>
+    </div>
+  </section>
+
+  <!-- Spinners -->
+  <section>
+    <h2>kids-spinner</h2>
+    <div class="row">
+      <kids-spinner variant="primary" size="sm"></kids-spinner>
+      <kids-spinner variant="secondary"></kids-spinner>
+      <kids-spinner variant="accent" size="lg"></kids-spinner>
+      <kids-spinner variant="warning" type="dots"></kids-spinner>
+      <kids-spinner variant="info" type="dots" size="lg"></kids-spinner>
+      <kids-spinner variant="primary" type="bounce"></kids-spinner>
+      <kids-spinner variant="secondary" type="bounce" size="sm"></kids-spinner>
+    </div>
+  </section>
+
+  <!-- Radio Buttons -->
+  <section>
+    <h2>kids-radio</h2>
+    <div class="row">
+      <kids-radio name="fruit" value="apple" variant="primary" checked>Apple</kids-radio>
+      <kids-radio name="fruit" value="banana" variant="primary">Banana</kids-radio>
+      <kids-radio name="fruit" value="cherry" variant="primary">Cherry</kids-radio>
+    </div>
+    <div class="row" style="margin-top: 12px;">
+      <kids-radio name="color" value="red" variant="secondary">Red</kids-radio>
+      <kids-radio name="color" value="green" variant="accent">Green</kids-radio>
+      <kids-radio name="color" value="blue" variant="primary" disabled>Blue (disabled)</kids-radio>
+    </div>
+  </section>
+
+  <!-- Checkboxes -->
+  <section>
+    <h2>kids-checkbox</h2>
+    <div class="row">
+      <kids-checkbox variant="primary" checked>I agree to have fun</kids-checkbox>
+      <kids-checkbox variant="secondary">Subscribe to cookies</kids-checkbox>
+      <kids-checkbox variant="accent">Enable rainbows</kids-checkbox>
+      <kids-checkbox variant="primary" disabled>Disabled</kids-checkbox>
+    </div>
+  </section>
+
   <script type="module" src="/src/index.ts"></script>
 </body>
 </html>
