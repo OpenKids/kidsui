@@ -241,6 +241,304 @@
     </div>
   </section>
 
+  <!-- ========================================== -->
+  <!--  STAGE 1 — General UI Components            -->
+  <!-- ========================================== -->
+
+  <!-- Textarea -->
+  <section>
+    <h2>kids-textarea</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <kids-textarea placeholder="Write your story here..." rows="3"></kids-textarea>
+      <kids-textarea placeholder="Outlined style" variant="outlined" rows="2"></kids-textarea>
+      <kids-textarea placeholder="Can't edit this" disabled rows="2"></kids-textarea>
+    </div>
+  </section>
+
+  <!-- Select -->
+  <section>
+    <h2>kids-select</h2>
+    <div class="row">
+      <kids-select placeholder="Pick a fruit!">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="cherry">Cherry</option>
+        <option value="grape">Grape</option>
+      </kids-select>
+      <kids-select placeholder="Pick a color!" variant="outlined">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </kids-select>
+      <kids-select placeholder="Disabled" disabled>
+        <option value="x">Can't pick</option>
+      </kids-select>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <section>
+    <h2>kids-tabs</h2>
+    <kids-tabs active="0">
+      <kids-tab label="Story">Once upon a time, in a land far away...</kids-tab>
+      <kids-tab label="Quiz">How many legs does a spider have?</kids-tab>
+      <kids-tab label="Activity">Draw your favorite animal!</kids-tab>
+    </kids-tabs>
+    <div style="margin-top: 16px;">
+      <kids-tabs active="0" variant="pills">
+        <kids-tab label="Easy">Start with the basics.</kids-tab>
+        <kids-tab label="Medium">A bit more challenging!</kids-tab>
+        <kids-tab label="Hard">For experts only!</kids-tab>
+      </kids-tabs>
+    </div>
+  </section>
+
+  <!-- Dialog -->
+  <section>
+    <h2>kids-dialog</h2>
+    <div class="row">
+      <kids-button variant="primary" onclick="document.getElementById('demo-dialog').setAttribute('open','')">
+        Open Dialog
+      </kids-button>
+    </div>
+    <kids-dialog id="demo-dialog" title="Hello There!">
+      <p>This is a playful dialog box. You can put anything inside!</p>
+      <span slot="footer">
+        <kids-button variant="secondary" size="sm" onclick="document.getElementById('demo-dialog').removeAttribute('open')">
+          Close
+        </kids-button>
+        <kids-button variant="primary" size="sm" onclick="document.getElementById('demo-dialog').removeAttribute('open')">
+          Got it!
+        </kids-button>
+      </span>
+    </kids-dialog>
+  </section>
+
+  <!-- Toast -->
+  <section>
+    <h2>kids-toast</h2>
+    <div class="row">
+      <kids-button variant="primary" size="sm" onclick="document.getElementById('demo-toast').setAttribute('open','')">
+        Show Toast
+      </kids-button>
+    </div>
+    <kids-toast id="demo-toast" variant="success" duration="3000" position="top-right">
+      Great job! You earned a star!
+    </kids-toast>
+  </section>
+
+  <!-- Slider -->
+  <section>
+    <h2>kids-slider</h2>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <kids-slider label="Volume" value="60" variant="primary"></kids-slider>
+      <kids-slider label="Difficulty" value="30" min="0" max="100" variant="secondary"></kids-slider>
+      <kids-slider label="Speed" value="80" variant="accent"></kids-slider>
+    </div>
+  </section>
+
+  <!-- Accordion -->
+  <section>
+    <h2>kids-accordion</h2>
+    <kids-accordion>
+      <kids-accordion-item label="What is the sun?" open>
+        The sun is a giant ball of hot gas that gives us light and warmth!
+      </kids-accordion-item>
+      <kids-accordion-item label="Why is the sky blue?">
+        Sunlight is scattered by molecules in the atmosphere, and blue light scatters the most!
+      </kids-accordion-item>
+      <kids-accordion-item label="How do fish breathe?">
+        Fish use gills to extract oxygen from water, just like we use lungs to breathe air!
+      </kids-accordion-item>
+    </kids-accordion>
+  </section>
+
+  <!-- Stepper -->
+  <section>
+    <h2>kids-stepper</h2>
+    <kids-stepper
+      steps='["Introduction","Vocabulary","Practice","Quiz"]'
+      active="2"
+    ></kids-stepper>
+  </section>
+
+  <!-- Skeleton -->
+  <section>
+    <h2>kids-skeleton</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="row">
+        <kids-skeleton variant="circle" width="48px" height="48px"></kids-skeleton>
+        <div style="flex: 1;">
+          <kids-skeleton variant="text" lines="2"></kids-skeleton>
+        </div>
+      </div>
+      <kids-skeleton variant="rect" height="100px"></kids-skeleton>
+      <kids-skeleton variant="card" height="140px"></kids-skeleton>
+    </div>
+  </section>
+
+  <!-- Choice Card -->
+  <section>
+    <h2>kids-choice-card</h2>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <kids-choice-card value="a">Mercury is the closest planet to the Sun</kids-choice-card>
+      <kids-choice-card value="b" selected>Venus is the hottest planet</kids-choice-card>
+      <kids-choice-card value="c" correct>Earth supports life</kids-choice-card>
+      <kids-choice-card value="d" incorrect>Jupiter is the smallest planet</kids-choice-card>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!--  STAGE 2 — Tutorial & Course Components     -->
+  <!-- ========================================== -->
+
+  <!-- Callout -->
+  <section>
+    <h2>kids-callout</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <kids-callout variant="tip">Always read the question carefully before answering!</kids-callout>
+      <kids-callout variant="fun-fact">Honey never spoils. Archaeologists found 3,000-year-old honey that was still edible!</kids-callout>
+      <kids-callout variant="warning">Don't forget to save your progress!</kids-callout>
+      <kids-callout variant="remember">The order of operations is: Parentheses, Exponents, Multiplication, Division, Addition, Subtraction.</kids-callout>
+    </div>
+  </section>
+
+  <!-- Lesson Nav -->
+  <section>
+    <h2>kids-lesson-nav</h2>
+    <kids-lesson-nav current="3" total="5" show-progress></kids-lesson-nav>
+  </section>
+
+  <!-- Lesson Progress -->
+  <section>
+    <h2>kids-lesson-progress</h2>
+    <kids-lesson-progress lessons='[
+      {"title":"Welcome to Space","status":"completed"},
+      {"title":"The Solar System","status":"completed"},
+      {"title":"Stars and Galaxies","status":"current"},
+      {"title":"Black Holes","status":"locked"},
+      {"title":"Final Quiz","status":"locked"}
+    ]'></kids-lesson-progress>
+  </section>
+
+  <!-- Question Card -->
+  <section>
+    <h2>kids-question-card</h2>
+    <kids-question-card number="3" total="10" status="unanswered" points="5">
+      <span slot="question">Which planet is known as the Red Planet?</span>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <kids-choice-card value="venus">Venus</kids-choice-card>
+        <kids-choice-card value="mars" selected>Mars</kids-choice-card>
+        <kids-choice-card value="jupiter">Jupiter</kids-choice-card>
+      </div>
+      <span slot="hint">Think about the color of rust!</span>
+    </kids-question-card>
+  </section>
+
+  <!-- Choice Group -->
+  <section>
+    <h2>kids-choice-group</h2>
+    <p style="margin-bottom: 8px; font-weight: 800;">Which animals are mammals? (select multiple)</p>
+    <kids-choice-group mode="multiple" direction="grid" columns="2">
+      <kids-choice-card value="dog">Dog</kids-choice-card>
+      <kids-choice-card value="snake">Snake</kids-choice-card>
+      <kids-choice-card value="whale">Whale</kids-choice-card>
+      <kids-choice-card value="frog">Frog</kids-choice-card>
+    </kids-choice-group>
+  </section>
+
+  <!-- Empty State -->
+  <section>
+    <h2>kids-empty-state</h2>
+    <kids-card>
+      <kids-empty-state
+        icon="📚"
+        title="No lessons yet!"
+        message="Start your first lesson to begin your learning adventure."
+      >
+        <kids-button slot="action" variant="primary" size="sm">Start Learning</kids-button>
+      </kids-empty-state>
+    </kids-card>
+  </section>
+
+  <!-- Achievement -->
+  <section>
+    <h2>kids-achievement</h2>
+    <div class="row">
+      <kids-button variant="warning" onclick="document.getElementById('demo-achievement').setAttribute('open','')">
+        Unlock Achievement!
+      </kids-button>
+    </div>
+    <kids-achievement
+      id="demo-achievement"
+      icon="🏆"
+      title="Quiz Master!"
+      message="You scored 100% on your first try. Amazing!"
+      variant="gold"
+    ></kids-achievement>
+  </section>
+
+  <!-- ========================================== -->
+  <!--  STAGE 3 — Quiz & Interactive Exercises     -->
+  <!-- ========================================== -->
+
+  <!-- Flashcard -->
+  <section>
+    <h2>kids-flashcard</h2>
+    <div class="grid">
+      <kids-flashcard>
+        <span slot="front">What is H₂O?</span>
+        <span slot="back">Water!</span>
+      </kids-flashcard>
+      <kids-flashcard>
+        <span slot="front">What is 7 × 8?</span>
+        <span slot="back">56</span>
+      </kids-flashcard>
+    </div>
+  </section>
+
+  <!-- Match Grid -->
+  <section>
+    <h2>kids-match-grid</h2>
+    <kids-match-grid pairs='[
+      {"left":"Cat","right":"Meow"},
+      {"left":"Dog","right":"Woof"},
+      {"left":"Cow","right":"Moo"},
+      {"left":"Duck","right":"Quack"}
+    ]'></kids-match-grid>
+  </section>
+
+  <!-- Sort List -->
+  <section>
+    <h2>kids-sort-list</h2>
+    <p style="margin-bottom: 8px; font-weight: 800;">Put the planets in order from the Sun:</p>
+    <kids-sort-list
+      items='["Earth","Venus","Mars","Mercury"]'
+      correct='["Mercury","Venus","Earth","Mars"]'
+    ></kids-sort-list>
+  </section>
+
+  <!-- Timer -->
+  <section>
+    <h2>kids-timer</h2>
+    <div class="row" style="gap: 32px;">
+      <kids-timer id="timer1" duration="30" variant="default"></kids-timer>
+      <kids-timer duration="120" variant="circular"></kids-timer>
+      <kids-timer duration="90" variant="compact"></kids-timer>
+    </div>
+    <div class="row" style="margin-top: 12px;">
+      <kids-button variant="accent" size="sm" onclick="document.getElementById('timer1').setAttribute('running','')">
+        Start Timer
+      </kids-button>
+      <kids-button variant="secondary" size="sm" onclick="document.getElementById('timer1').removeAttribute('running')">
+        Pause
+      </kids-button>
+      <kids-button variant="warning" size="sm" onclick="document.getElementById('timer1').reset()">
+        Reset
+      </kids-button>
+    </div>
+  </section>
+
   <script type="module" src="/src/index.ts"></script>
 </body>
 </html>
