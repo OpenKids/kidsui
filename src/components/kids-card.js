@@ -55,10 +55,13 @@ export class KidsCard extends KidsElement {
         }
 
         /* ---- Slots ---- */
+        .header-wrapper {
+          margin-bottom: var(--kids-space-md);
+        }
+
         ::slotted([slot="header"]) {
           font-size: var(--kids-font-size-xl);
           font-weight: var(--kids-font-weight-bold);
-          margin-bottom: var(--kids-space-md);
           display: block;
         }
 
@@ -67,18 +70,22 @@ export class KidsCard extends KidsElement {
           font-weight: var(--kids-font-weight-normal);
         }
 
-        ::slotted([slot="footer"]) {
-          margin-top: var(--kids-space-md);
-          display: block;
+        .footer-wrapper {
+          margin-top: var(--kids-space-lg);
         }
+
       </style>
 
       <div class="card ${variant} ${hoverable ? "hoverable" : ""}" part="card">
-        <slot name="header"></slot>
+        <div class="header-wrapper">
+          <slot name="header"></slot>
+        </div>
         <div class="body">
           <slot></slot>
         </div>
-        <slot name="footer"></slot>
+        <div class="footer-wrapper">
+          <slot name="footer"></slot>
+        </div>
       </div>
     `;
   }
