@@ -78,7 +78,7 @@ export class KidsQuestionCard extends KidsElement {
           font-size: var(--kids-font-size-sm);
           font-weight: var(--kids-font-weight-bold);
           color: var(--kids-color-primary);
-          background: rgba(108, 99, 255, 0.1);
+          background: var(--kids-alpha-primary-12);
           padding: var(--kids-space-xs) var(--kids-space-md);
           border-radius: var(--kids-radius-full);
         }
@@ -104,9 +104,13 @@ export class KidsQuestionCard extends KidsElement {
         }
 
         .hint {
+          display: none;
+        }
+        .hint:has(::slotted(*)) {
+          display: block;
           margin-top: var(--kids-space-md);
           padding: var(--kids-space-sm) var(--kids-space-md);
-          background: rgba(255, 188, 66, 0.15);
+          background: var(--kids-alpha-warning-15);
           border-radius: var(--kids-radius-sm);
           font-family: var(--kids-font-family);
           font-size: var(--kids-font-size-sm);
@@ -142,9 +146,9 @@ export class KidsQuestionCard extends KidsElement {
           display: flex;
         }
 
-        .status-bar.correct { background: rgba(67, 233, 123, 0.15); color: var(--kids-color-text); }
-        .status-bar.incorrect { background: rgba(255, 101, 132, 0.15); color: var(--kids-color-text); }
-        .status-bar.skipped { background: rgba(255, 188, 66, 0.15); color: var(--kids-color-text); }
+        .status-bar.correct { background: var(--kids-alpha-accent-15); color: var(--kids-color-text); }
+        .status-bar.incorrect { background: var(--kids-alpha-secondary-15); color: var(--kids-color-text); }
+        .status-bar.skipped { background: var(--kids-alpha-warning-15); color: var(--kids-color-text); }
       </style>
 
       <div class="question-card ${status}" part="card">

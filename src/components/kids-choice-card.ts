@@ -79,21 +79,21 @@ export class KidsChoiceCard extends KidsElement {
 
         .choice.selected {
           border-color: var(--kids-color-primary);
-          background: rgba(108, 99, 255, 0.08);
-          box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
+          background: var(--kids-alpha-primary-12);
+          box-shadow: 0 0 0 4px var(--kids-alpha-primary-15);
           font-weight: var(--kids-font-weight-bold);
         }
 
         .choice.correct {
           border-color: var(--kids-color-accent);
-          background: rgba(67, 233, 123, 0.1);
-          box-shadow: 0 0 0 4px rgba(67, 233, 123, 0.2);
+          background: var(--kids-alpha-accent-12);
+          box-shadow: 0 0 0 4px var(--kids-alpha-accent-20);
         }
 
         .choice.incorrect {
           border-color: var(--kids-color-secondary);
-          background: rgba(255, 101, 132, 0.1);
-          box-shadow: 0 0 0 4px rgba(255, 101, 132, 0.2);
+          background: var(--kids-alpha-secondary-12);
+          box-shadow: 0 0 0 4px var(--kids-alpha-secondary-15);
         }
 
         .choice.disabled {

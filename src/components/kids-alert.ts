@@ -69,7 +69,7 @@ export class KidsAlert extends KidsElement {
         }
         .alert.error {
           background: #FEF2F2;
-          border-left-color: var(--kids-color-secondary);
+          border-left-color: var(--kids-color-error);
           color: #991B1B;
         }
 

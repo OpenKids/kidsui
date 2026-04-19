@@ -85,7 +85,7 @@ export class KidsToast extends KidsElement {
           color: var(--kids-color-text);
         }
         .toast.error {
-          background: var(--kids-color-secondary);
+          background: var(--kids-color-error);
           color: var(--kids-color-text-light);
         }
 

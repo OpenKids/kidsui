@@ -95,17 +95,17 @@ export class KidsSortList extends KidsElement {
 
         .sort-item.drag-over {
           border-color: var(--kids-color-primary);
-          background: rgba(108, 99, 255, 0.05);
+          background: var(--kids-alpha-primary-12);
         }
 
         .sort-item.correct {
           border-color: var(--kids-color-accent);
-          background: rgba(67, 233, 123, 0.08);
+          background: var(--kids-alpha-accent-12);
         }
 
         .sort-item.incorrect {
           border-color: var(--kids-color-secondary);
-          background: rgba(255, 101, 132, 0.08);
+          background: var(--kids-alpha-secondary-12);
         }
 
         .handle {

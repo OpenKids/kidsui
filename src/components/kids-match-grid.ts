@@ -107,20 +107,20 @@ export class KidsMatchGrid extends KidsElement {
 
         .item.selected {
           border-color: var(--kids-color-primary);
-          background: rgba(108, 99, 255, 0.1);
-          box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
+          background: var(--kids-alpha-primary-12);
+          box-shadow: 0 0 0 4px var(--kids-alpha-primary-15);
         }
 
         .item.matched {
           border-color: var(--kids-color-accent);
-          background: rgba(67, 233, 123, 0.1);
+          background: var(--kids-alpha-accent-12);
           opacity: 0.7;
           cursor: default;
         }
 
         .item.incorrect {
           border-color: var(--kids-color-secondary);
-          background: rgba(255, 101, 132, 0.1);
+          background: var(--kids-alpha-secondary-12);
         }
 
         .progress {
@@ -205,15 +205,19 @@ export class KidsMatchGrid extends KidsElement {
       detail: { left: this._selectedLeft, right: this._selectedRight, correct },
     }));
 
+    // Save refs to selected items BEFORE clearing state and re-rendering
+    const selectedItems = !correct
+      ? Array.from(this.root.querySelectorAll(".item.selected"))
+      : [];
+
     this._selectedLeft = null;
     this._selectedRight = null;
     this.render();
     this._bindEvents();
 
     if (!correct) {
-      // Shake incorrect items
-      const items = Array.from(this.root.querySelectorAll(".item.selected"));
-      items.forEach((item) => {
+      // Shake incorrect items using saved refs
+      selectedItems.forEach((item) => {
         this.motionAnimate(item as Element, { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.4 });
       });
     }

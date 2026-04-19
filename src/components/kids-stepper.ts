@@ -40,7 +40,7 @@ export class KidsStepper extends KidsElement {
             </div>
             ${variant === "default" ? `<span class="label">${label}</span>` : ""}
           </div>
-          ${i < steps.length - 1 ? '<div class="connector"><div class="connector-fill" style="transform: scaleX(${i < active ? 1 : 0})"></div></div>' : ""}
+          ${i < steps.length - 1 ? `<div class="connector"><div class="connector-fill" style="transform: scaleX(${i < active ? 1 : 0})"></div></div>` : ""}
         `;
       })
       .join("");

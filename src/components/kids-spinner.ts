@@ -6,7 +6,7 @@ import { KidsElement } from "../core/kids-element";
  * Attributes:
  *   size    — "sm" | "md" (default) | "lg"
  *   variant — "primary" (default) | "secondary" | "accent" | "warning" | "info"
- *   style   — "spin" (default) | "dots" | "bounce"
+ *   type    — "spin" (default) | "dots" | "bounce"
  *
  * Animations:
  *   - spin: classic rotating ring

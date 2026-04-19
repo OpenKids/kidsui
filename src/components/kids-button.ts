@@ -117,6 +117,10 @@ export class KidsButton extends KidsElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this._bindEvents();
+  }
+
+  private _bindEvents(): void {
     const btn = this.root.querySelector("button");
     if (!btn) return;
 
@@ -157,6 +161,7 @@ export class KidsButton extends KidsElement {
 
   attributeChangedCallback(): void {
     this.render();
+    this._bindEvents();
   }
 }
 

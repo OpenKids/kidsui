@@ -61,7 +61,7 @@ export class KidsTextarea extends KidsElement {
 
         textarea:focus {
           border-color: var(--kids-color-primary);
-          box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.18);
+          box-shadow: 0 0 0 4px var(--kids-alpha-primary-18);
         }
 
         textarea:disabled {
@@ -95,12 +95,22 @@ export class KidsTextarea extends KidsElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this._bindEvents();
+  }
+
+  attributeChangedCallback(): void {
+    this.render();
+    this._bindEvents();
+  }
+
+  private _bindEvents(): void {
     const textarea = this.root.querySelector("textarea");
     if (!textarea) return;
 
     textarea.addEventListener("input", () => {
       this.dispatchEvent(new CustomEvent("kids-input", {
         bubbles: true,
+        composed: true,
         detail: { value: textarea.value },
       }));
     });
@@ -108,13 +118,10 @@ export class KidsTextarea extends KidsElement {
     textarea.addEventListener("change", () => {
       this.dispatchEvent(new CustomEvent("kids-change", {
         bubbles: true,
+        composed: true,
         detail: { value: textarea.value },
       }));
     });
-  }
-
-  attributeChangedCallback(): void {
-    this.render();
   }
 }
 

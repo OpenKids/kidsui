@@ -22,6 +22,8 @@ import { KidsElement } from "../core/kids-element";
 export class KidsDialog extends KidsElement {
   static observedAttributes = ["open", "title", "size"];
 
+  private _onKeydown: ((e: KeyboardEvent) => void) | null = null;
+
   protected template(): string {
     const isOpen = this.boolAttr("open");
     const title = this.attr("title");
@@ -144,12 +146,23 @@ export class KidsDialog extends KidsElement {
       if (e.target === backdrop) this._close();
     });
 
-    // Escape key
-    document.addEventListener("keydown", (e) => {
+    // Escape key — remove previous listener first to avoid stacking
+    if (this._onKeydown) {
+      document.removeEventListener("keydown", this._onKeydown);
+    }
+    this._onKeydown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && this.boolAttr("open")) {
         this._close();
       }
-    });
+    };
+    document.addEventListener("keydown", this._onKeydown);
+  }
+
+  disconnectedCallback(): void {
+    if (this._onKeydown) {
+      document.removeEventListener("keydown", this._onKeydown);
+      this._onKeydown = null;
+    }
   }
 
   private _close(): void {

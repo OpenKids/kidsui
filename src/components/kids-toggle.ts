@@ -156,6 +156,12 @@ export class KidsToggle extends KidsElement {
     } else {
       this.removeAttribute("checked");
     }
+
+    this.dispatchEvent(new CustomEvent("kids-toggle", {
+      bubbles: true,
+      composed: true,
+      detail: { checked: next },
+    }));
   }
 
   /**

@@ -84,7 +84,7 @@ export class KidsInput extends KidsElement {
 
         input.outlined:focus {
           border-color: var(--kids-color-secondary);
-          box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+          box-shadow: 0 0 0 3px var(--kids-alpha-primary-15);
         }
 
         /* ---- Disabled ---- */
@@ -126,7 +126,10 @@ export class KidsInput extends KidsElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this._bindEvents();
+  }
 
+  private _bindEvents(): void {
     const input = this.root.querySelector("input");
     if (!input) return;
 
@@ -170,6 +173,7 @@ export class KidsInput extends KidsElement {
 
   attributeChangedCallback(): void {
     this.render();
+    this._bindEvents();
   }
 }
 

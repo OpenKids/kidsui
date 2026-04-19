@@ -64,11 +64,11 @@ export class KidsChip extends KidsElement {
         }
 
         /* ---- Variants (outline by default, filled when selected) ---- */
-        .chip.primary   { background: rgba(108, 99, 255, 0.12); color: var(--kids-color-primary); border-color: var(--kids-color-primary); }
-        .chip.secondary { background: rgba(255, 101, 132, 0.12); color: var(--kids-color-secondary); border-color: var(--kids-color-secondary); }
-        .chip.accent    { background: rgba(67, 233, 123, 0.12); color: #1a8a45; border-color: var(--kids-color-accent); }
-        .chip.warning   { background: rgba(255, 188, 66, 0.12); color: #92400E; border-color: var(--kids-color-warning); }
-        .chip.info      { background: rgba(56, 189, 248, 0.12); color: #0369A1; border-color: var(--kids-color-info); }
+        .chip.primary   { background: var(--kids-alpha-primary-12); color: var(--kids-color-primary); border-color: var(--kids-color-primary); }
+        .chip.secondary { background: var(--kids-alpha-secondary-12); color: var(--kids-color-secondary); border-color: var(--kids-color-secondary); }
+        .chip.accent    { background: var(--kids-alpha-accent-12); color: var(--kids-color-text); border-color: var(--kids-color-accent); }
+        .chip.warning   { background: var(--kids-alpha-warning-12); color: var(--kids-color-text); border-color: var(--kids-color-warning); }
+        .chip.info      { background: var(--kids-alpha-info-12); color: var(--kids-color-text); border-color: var(--kids-color-info); }
 
         /* ---- Selected (filled) ---- */
         .chip.selected.primary   { background: var(--kids-color-primary); color: var(--kids-color-text-light); }

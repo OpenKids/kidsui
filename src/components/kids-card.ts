@@ -95,7 +95,10 @@ export class KidsCard extends KidsElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this._bindHoverEvents();
+  }
 
+  private _bindHoverEvents(): void {
     if (this.boolAttr("hoverable")) {
       const card = this.root.querySelector(".card");
       if (!card) return;
@@ -120,6 +123,7 @@ export class KidsCard extends KidsElement {
 
   attributeChangedCallback(): void {
     this.render();
+    this._bindHoverEvents();
   }
 }
 

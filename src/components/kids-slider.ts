@@ -156,27 +156,65 @@ export class KidsSlider extends KidsElement {
     this._bindEvents();
   }
 
-  private _bindEvents(): void {
-    const input = this.root.querySelector("input");
-    if (!input) return;
+  private _input: HTMLInputElement | null = null;
 
-    input.addEventListener("input", () => {
-      this.setAttribute("value", input.value);
+  private _bindEvents(): void {
+    this._input = this.root.querySelector("input");
+    if (!this._input) return;
+
+    this._input.addEventListener("input", () => {
+      // Surgically update the value attribute without triggering a full re-render.
+      // We bypass attributeChangedCallback by updating the DOM directly.
+      const val = this._input!.value;
+      this._updateTrackFill(val);
+      this._updateValueDisplay(val);
+
+      // Reflect to attribute without re-render (handled below in attributeChangedCallback)
+      this._skipRender = true;
+      this.setAttribute("value", val);
+      this._skipRender = false;
+
       this.dispatchEvent(new CustomEvent("kids-input", {
         bubbles: true,
-        detail: { value: parseFloat(input.value) },
+        detail: { value: parseFloat(val) },
       }));
     });
 
-    input.addEventListener("change", () => {
+    this._input.addEventListener("change", () => {
       this.dispatchEvent(new CustomEvent("kids-change", {
         bubbles: true,
-        detail: { value: parseFloat(input.value) },
+        detail: { value: parseFloat(this._input!.value) },
       }));
     });
   }
 
-  attributeChangedCallback(): void {
+  private _skipRender = false;
+
+  private _updateTrackFill(value: string): void {
+    if (!this._input) return;
+    const min = parseFloat(this.attr("min", "0"));
+    const max = parseFloat(this.attr("max", "100"));
+    const percent = ((parseFloat(value) - min) / (max - min)) * 100;
+    this._input.style.background = `linear-gradient(to right, var(--track-color) 0%, var(--track-color) ${percent}%, var(--kids-color-surface-alt) ${percent}%, var(--kids-color-surface-alt) 100%)`;
+  }
+
+  private _updateValueDisplay(value: string): void {
+    const display = this.root.querySelector(".value-display");
+    if (display) display.textContent = value;
+  }
+
+  attributeChangedCallback(name: string): void {
+    if (this._skipRender) return;
+
+    // For value-only changes when we already have a rendered input, do a surgical update
+    if (name === "value" && this._input) {
+      const val = this.attr("value", "50");
+      this._input.value = val;
+      this._updateTrackFill(val);
+      this._updateValueDisplay(val);
+      return;
+    }
+
     this.render();
     this._bindEvents();
   }

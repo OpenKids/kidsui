@@ -25,6 +25,14 @@ export class KidsSelect extends KidsElement {
   private _open = false;
   private _options: { value: string; label: string }[] = [];
 
+  private _onDocClick = (e: Event) => {
+    if (!this.contains(e.target as Node) && this._open) {
+      this._open = false;
+      this.render();
+      this._bindEvents();
+    }
+  };
+
   protected template(): string {
     const placeholder = this.attr("placeholder", "Pick one!");
     const disabled = this.boolAttr("disabled");
@@ -87,7 +95,7 @@ export class KidsSelect extends KidsElement {
         .trigger.open,
         .trigger:focus-visible {
           border-color: var(--kids-color-primary);
-          box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.18);
+          box-shadow: 0 0 0 4px var(--kids-alpha-primary-18);
         }
 
         .trigger.disabled {
@@ -171,13 +179,11 @@ export class KidsSelect extends KidsElement {
     this._bindEvents();
 
     // Close on outside click
-    document.addEventListener("click", (e) => {
-      if (!this.contains(e.target as Node) && this._open) {
-        this._open = false;
-        this.render();
-        this._bindEvents();
-      }
-    });
+    document.addEventListener("click", this._onDocClick);
+  }
+
+  disconnectedCallback(): void {
+    document.removeEventListener("click", this._onDocClick);
   }
 
   private _bindEvents(): void {
@@ -224,6 +230,7 @@ export class KidsSelect extends KidsElement {
         const label = this._options.find((o) => o.value === value)?.label || "";
         this.dispatchEvent(new CustomEvent("kids-change", {
           bubbles: true,
+          composed: true,
           detail: { value, label },
         }));
       });
