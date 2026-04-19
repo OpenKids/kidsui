@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, hover, press } from "motion";
 
 /**
  * <kids-button> — A playful, bouncy button.
@@ -125,38 +125,42 @@ export class KidsButton extends KidsElement {
     const btn = this.root.querySelector("button");
     if (!btn) return;
 
-    btn.addEventListener("pointerenter", () => {
-      if (this.boolAttr("disabled")) return;
-      animate(this.root.querySelector("button"), { scale: 1.07 }, {
+    // Hover: gentle scale-up on enter, return to normal on leave
+    hover(btn, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
+
+      animate(element, { scale: 1.07 }, {
         type: "spring",
         stiffness: 500,
         damping: 15,
       });
+
+      return () => {
+        animate(element, { scale: 1 }, {
+          type: "spring",
+          stiffness: 500,
+          damping: 15,
+        });
+      };
     });
 
-    btn.addEventListener("pointerleave", () => {
-      animate(this.root.querySelector("button"), { scale: 1 }, {
-        type: "spring",
-        stiffness: 500,
-        damping: 15,
-      });
-    });
+    // Press: squish down on press, return to hover scale on release
+    press(btn, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
 
-    btn.addEventListener("pointerdown", () => {
-      if (this.boolAttr("disabled")) return;
-      animate(this.root.querySelector("button"), { scale: 0.92 }, {
+      animate(element, { scale: 0.92 }, {
         type: "spring",
         stiffness: 600,
         damping: 20,
       });
-    });
 
-    btn.addEventListener("pointerup", () => {
-      animate(this.root.querySelector("button"), { scale: 1.07 }, {
-        type: "spring",
-        stiffness: 500,
-        damping: 12,
-      });
+      return () => {
+        animate(element, { scale: 1.07 }, {
+          type: "spring",
+          stiffness: 500,
+          damping: 12,
+        });
+      };
     });
   }
 
