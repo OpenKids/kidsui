@@ -21,6 +21,12 @@ import { animate } from "motion";
 export class KidsAchievement extends KidsElement {
   static observedAttributes = ["icon", "title", "message", "variant", "open"];
 
+  _onClick = (event) => {
+    if (event.target.closest(".dismiss")) {
+      this._close();
+    }
+  };
+
   template() {
     const icon = this.attr("icon", "🏆");
     const title = this.attr("title", "Achievement Unlocked!");
@@ -53,20 +59,6 @@ export class KidsAchievement extends KidsElement {
           display: block;
         }
 
-        .backdrop {
-          position: fixed;
-          inset: 0;
-          background: rgba(45, 43, 85, 0.6);
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.3s ease;
-        }
-
-        .backdrop.open {
-          opacity: 1;
-          pointer-events: auto;
-        }
-
         .achievement {
           display: flex;
           flex-direction: column;
@@ -79,12 +71,16 @@ export class KidsAchievement extends KidsElement {
           pointer-events: auto;
           will-change: transform, opacity;
           opacity: 0;
+          transform: scale(0.5);
           position: relative;
           min-width: 280px;
           max-width: 380px;
         }
 
-        .achievement.open { opacity: 1; }
+        .achievement.open {
+          opacity: 1;
+          transform: scale(1);
+        }
 
         .badge {
           width: 80px;
@@ -134,8 +130,7 @@ export class KidsAchievement extends KidsElement {
         .dismiss:hover { transform: scale(1.05); }
       </style>
 
-      ${isOpen ? `<div class="backdrop open"></div>` : ""}
-      <div class="achievement ${isOpen ? "open" : ""}" part="achievement">
+      <div class="achievement" part="achievement">
         <div class="badge">${icon}</div>
         <div class="title">${title}</div>
         ${message ? `<div class="message">${message}</div>` : ""}
@@ -146,38 +141,61 @@ export class KidsAchievement extends KidsElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this._bindEvents();
+    this.root.addEventListener("click", this._onClick);
+
+    if (this.boolAttr("open")) {
+      this._playOpenAnimation();
+    }
   }
 
-  _bindEvents() {
-    const dismissBtn = this.root.querySelector(".dismiss");
-    dismissBtn?.addEventListener("click", () => this._close());
-
-    const backdrop = this.root.querySelector(".backdrop");
-    backdrop?.addEventListener("click", () => this._close());
+  disconnectedCallback() {
+    this.root.removeEventListener("click", this._onClick);
   }
 
   _close() {
+    cancelAnimationFrame(this._openFrame);
     this.removeAttribute("open");
     this.dispatchEvent(new CustomEvent("kids-close", { bubbles: true }));
   }
 
-  attributeChangedCallback(name) {
-    this.render();
-    this._bindEvents();
+  _playOpenAnimation() {
+    cancelAnimationFrame(this._openFrame);
+    this._openFrame = requestAnimationFrame(() => {
+      const achievement = this.root.querySelector(".achievement");
+      const badge = this.root.querySelector(".badge");
 
-    if (name === "open" && this.boolAttr("open")) {
-      animate(this.root.querySelector(".badge"), { scale: [0, 1.2, 1], rotate: ["0deg", "10deg", "0deg"] }, {
-        type: "spring",
-        stiffness: 400,
-        damping: 12,
-      });
-      animate(this.root.querySelector(".achievement"), { scale: [0.5, 1], opacity: [0, 1] }, {
-        type: "spring",
-        stiffness: 250,
-        damping: 15,
-      });
+      achievement?.classList.add("open");
+
+      if (badge) {
+        animate(badge, { scale: [0, 1.2, 1], rotate: ["0deg", "10deg", "0deg"] }, {
+          type: "spring",
+          stiffness: 400,
+          damping: 12,
+        });
+      }
+
+      if (achievement) {
+        animate(achievement, { scale: [0.5, 1], opacity: [0, 1] }, {
+          type: "spring",
+          stiffness: 250,
+          damping: 15,
+        });
+      }
+    });
+  }
+
+  attributeChangedCallback(name) {
+    if (!this.isConnected) return;
+
+    if (name === "open") {
+      if (this.boolAttr("open")) {
+        this._playOpenAnimation();
+      }
+
+      return;
     }
+
+    this.render();
   }
 }
 
