@@ -58,22 +58,18 @@ export class KidsTooltip extends KidsElement {
         .tip.top {
           bottom: calc(100% + 8px);
           left: 50%;
-          transform: translateX(-50%);
         }
         .tip.bottom {
           top: calc(100% + 8px);
           left: 50%;
-          transform: translateX(-50%);
         }
         .tip.left {
           right: calc(100% + 8px);
           top: 50%;
-          transform: translateY(-50%);
         }
         .tip.right {
           left: calc(100% + 8px);
           top: 50%;
-          transform: translateY(-50%);
         }
 
         /* ---- Arrow ---- */
@@ -115,14 +111,28 @@ export class KidsTooltip extends KidsElement {
     if (!tip) return;
     const position = this.attr("position", "top");
 
+    // Keep the centering transform while animating the offset
+    const isHorizontal = position === "top" || position === "bottom";
+    const centering = isHorizontal ? "translateX(-50%)" : "translateY(-50%)";
+
     const offsets = {
-      top:    { y: [6, 0] },
-      bottom: { y: [-6, 0] },
-      left:   { x: [6, 0] },
-      right:  { x: [-6, 0] },
+      top:    `${centering} translateY(6px)`,
+      bottom: `${centering} translateY(-6px)`,
+      left:   `${centering} translateX(6px)`,
+      right:  `${centering} translateX(-6px)`,
     };
 
-    animate(tip, { opacity: [0, 1], ...(offsets[position] ?? offsets.top) }, {
+    const finals = {
+      top:    `${centering} translateY(0)`,
+      bottom: `${centering} translateY(0)`,
+      left:   `${centering} translateX(0)`,
+      right:  `${centering} translateX(0)`,
+    };
+
+    animate(tip, {
+      opacity: [0, 1],
+      transform: [offsets[position] ?? offsets.top, finals[position] ?? finals.top],
+    }, {
       type: "spring",
       stiffness: 400,
       damping: 20,
