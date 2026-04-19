@@ -40,13 +40,17 @@ export class KidsAchievement extends KidsElement {
     return /* html */ `
       <style>
         :host {
-          display: block;
+          display: none;
           position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           z-index: 3000;
           pointer-events: none;
+        }
+
+        :host([open]) {
+          display: block;
         }
 
         .backdrop {
@@ -130,7 +134,7 @@ export class KidsAchievement extends KidsElement {
         .dismiss:hover { transform: scale(1.05); }
       </style>
 
-      <div class="backdrop ${isOpen ? "open" : ""}"></div>
+      ${isOpen ? `<div class="backdrop open"></div>` : ""}
       <div class="achievement ${isOpen ? "open" : ""}" part="achievement">
         <div class="badge">${icon}</div>
         <div class="title">${title}</div>
