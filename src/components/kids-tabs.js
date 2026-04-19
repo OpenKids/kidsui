@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-tabs> — A playful tabbed navigation component.
@@ -135,10 +136,10 @@ export class KidsTabs extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".tab-header", { opacity: [0, 1], y: [-10, 0] }, {
+    animate(this.root.querySelector(".tab-header"), { opacity: [0, 1], y: [-10, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
+      damping: 20,
     });
   }
 
@@ -169,7 +170,7 @@ export class KidsTabs extends KidsElement {
       const tabs = Array.from(this.querySelectorAll("kids-tab"));
       const label = tabs[index]?.getAttribute("label") || "";
 
-      this.motionAnimate(".tab-panel", { opacity: [0, 1] }, { duration: 0.2 });
+      animate(this.root.querySelector(".tab-panel"), { opacity: [0, 1] }, { duration: 0.2 });
 
       this.dispatchEvent(new CustomEvent("kids-tab-change", {
         bubbles: true,

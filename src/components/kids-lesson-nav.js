@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-lesson-nav> — Navigation bar for stepping through lessons.
@@ -135,10 +136,10 @@ export class KidsLessonNav extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".nav", { opacity: [0, 1], y: [15, 0] }, {
+    animate(this.root.querySelector(".nav"), { opacity: [0, 1], y: [15, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
+      damping: 20,
     });
   }
 

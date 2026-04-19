@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-textarea> — A playful multi-line text input.
@@ -86,10 +87,10 @@ export class KidsTextarea extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate("textarea", { opacity: [0, 1], y: [12, 0] }, {
+    animate(this.root.querySelector("textarea"), { opacity: [0, 1], y: [12, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
+      damping: 20,
     });
   }
 

@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-spinner> — A fun animated loading indicator.
@@ -107,7 +108,7 @@ export class KidsSpinner extends KidsElement {
     if (type === "dots") {
       const dots = Array.from(this.root.querySelectorAll(".dot"));
       dots.forEach((dot, i) => {
-        this._loopAnimation = this.motionAnimate(
+        this._loopAnimation = animate(
           dot,
           { y: [0, -10, 0] },
           {
@@ -123,8 +124,8 @@ export class KidsSpinner extends KidsElement {
     }
 
     if (type === "bounce") {
-      this._loopAnimation = this.motionAnimate(
-        ".ball",
+      this._loopAnimation = animate(
+        this.root.querySelector(".ball"),
         { y: [0, -20, 0], scaleY: [1, 0.9, 1.15, 1] },
         {
           duration: 0.6,
@@ -136,8 +137,8 @@ export class KidsSpinner extends KidsElement {
     }
 
     // spin
-    this._loopAnimation = this.motionAnimate(
-      ".ring",
+    this._loopAnimation = animate(
+      this.root.querySelector(".ring"),
       { rotate: [0, 360] },
       { duration: 0.8, repeat: Infinity, ease: "linear" },
     );
@@ -150,7 +151,7 @@ export class KidsSpinner extends KidsElement {
   attributeChangedCallback() {
     this._loopAnimation?.cancel();
     this.render();
-    requestAnimationFrame(() => this._startAnimation());
+    this._startAnimation();
   }
 }
 

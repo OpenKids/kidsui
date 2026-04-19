@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-input> — A playful text input with animated focus states.
@@ -117,10 +118,10 @@ export class KidsInput extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(".wrapper", { opacity: [0, 1], y: [12, 0] }, {
+    animate(this.root.querySelector(".wrapper"), { opacity: [0, 1], y: [12, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
+      damping: 20,
     });
   }
 
@@ -135,18 +136,18 @@ export class KidsInput extends KidsElement {
 
     input.addEventListener("focus", () => {
       if (this.boolAttr("disabled")) return;
-      this.motionAnimate(".wrapper", { scale: 1.02 }, {
+      animate(this.root.querySelector(".wrapper"), { scale: 1.02 }, {
         type: "spring",
         stiffness: 400,
-        damping: 20,
+        damping: 15,
       });
     });
 
     input.addEventListener("blur", () => {
-      this.motionAnimate(".wrapper", { scale: 1 }, {
+      animate(this.root.querySelector(".wrapper"), { scale: 1 }, {
         type: "spring",
         stiffness: 400,
-        damping: 20,
+        damping: 15,
       });
     });
 

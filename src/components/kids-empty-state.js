@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-empty-state> — A playful placeholder for empty content areas.
@@ -74,22 +75,20 @@ export class KidsEmptyState extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".icon", { scale: [0, 1], rotate: ["-15deg", "0deg"] }, {
+    animate(this.root.querySelector(".icon"), { scale: [0, 1], rotate: ["-15deg", "0deg"] }, {
       type: "spring",
       stiffness: 350,
-      damping: 15,
+      damping: 12,
     });
-    this.motionAnimate(".title", { opacity: [0, 1], y: [15, 0] }, {
+    animate(this.root.querySelector(".title"), { opacity: [0, 1], y: [15, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
-      delay: 0.1,
+      damping: 20,
     });
-    this.motionAnimate(".message", { opacity: [0, 0.7], y: [15, 0] }, {
+    animate(this.root.querySelector(".message"), { opacity: [0, 0.7], y: [15, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
-      delay: 0.15,
+      damping: 20,
     });
   }
 

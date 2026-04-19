@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-progress> — A colourful animated progress bar.
@@ -113,7 +114,7 @@ export class KidsProgress extends KidsElement {
 
   onEnter() {
     const value = Math.min(100, Math.max(0, Number(this.attr("value", "0")) || 0));
-    this.motionAnimate(".fill", { width: [`0%`, `${value}%`] }, {
+    animate(this.root.querySelector(".fill"), { width: [`0%`, `${value}%`] }, {
       type: "spring",
       stiffness: 200,
       damping: 25,
@@ -123,12 +124,10 @@ export class KidsProgress extends KidsElement {
   attributeChangedCallback() {
     this.render();
     const value = Math.min(100, Math.max(0, Number(this.attr("value", "0")) || 0));
-    requestAnimationFrame(() => {
-      this.motionAnimate(".fill", { width: `${value}%` }, {
-        type: "spring",
-        stiffness: 200,
-        damping: 25,
-      });
+    animate(this.root.querySelector(".fill"), { width: `${value}%` }, {
+      type: "spring",
+      stiffness: 200,
+      damping: 25,
     });
   }
 }

@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-checkbox> — A playful animated checkbox.
@@ -127,7 +128,7 @@ export class KidsCheckbox extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".box", { scale: [0, 1] }, {
+    animate(this.root.querySelector(".box"), { scale: [0, 1] }, {
       type: "spring",
       stiffness: 400,
       damping: 18,
@@ -175,7 +176,7 @@ export class KidsCheckbox extends KidsElement {
       // Animate checkmark
       const check = this.root.querySelector(".check");
       if (check) {
-        this.motionAnimate(check, { scale: checked ? 1 : 0 }, {
+        animate(check, { scale: checked ? 1 : 0 }, {
           type: "spring",
           stiffness: 500,
           damping: checked ? 15 : 22,
@@ -184,7 +185,7 @@ export class KidsCheckbox extends KidsElement {
 
       // Bounce the box on check
       if (checked) {
-        this.motionAnimate(this._box, { scale: [1, 1.15, 1] }, {
+        animate(this._box, { scale: [1, 1.15, 1] }, {
           type: "spring",
           stiffness: 400,
           damping: 14,

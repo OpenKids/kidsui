@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-badge> — A small status/label badge with attention-grabbing animations.
@@ -72,8 +73,8 @@ export class KidsBadge extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(
-      ".badge",
+    animate(
+      this.root.querySelector(".badge"),
       { scale: [0, 1.15, 1] },
       { type: "spring", stiffness: 500, damping: 14 },
     );
@@ -90,24 +91,24 @@ export class KidsBadge extends KidsElement {
 
     switch (mode) {
       case "pulse":
-        this._loopAnimation = this.motionAnimate(
-          ".badge",
+        this._loopAnimation = animate(
+          badge,
           { scale: [1, 1.12, 1] },
           { duration: 1.2, repeat: Infinity, ease: "easeInOut" },
         );
         break;
 
       case "wiggle":
-        this._loopAnimation = this.motionAnimate(
-          ".badge",
+        this._loopAnimation = animate(
+          badge,
           { rotate: [0, -6, 6, -4, 4, 0] },
           { duration: 0.6, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" },
         );
         break;
 
       case "bounce":
-        this._loopAnimation = this.motionAnimate(
-          ".badge",
+        this._loopAnimation = animate(
+          badge,
           { y: [0, -8, 0] },
           { duration: 0.5, repeat: Infinity, repeatDelay: 2, type: "spring", stiffness: 400, damping: 10 },
         );
@@ -122,7 +123,7 @@ export class KidsBadge extends KidsElement {
   attributeChangedCallback() {
     this._loopAnimation?.cancel();
     this.render();
-    requestAnimationFrame(() => this.startLoop());
+    this.startLoop();
   }
 }
 

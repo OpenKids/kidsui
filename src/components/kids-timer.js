@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-timer> — A playful countdown/count-up timer for timed exercises.
@@ -181,9 +182,9 @@ export class KidsTimer extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".timer", { scale: [0.8, 1], opacity: [0, 1] }, {
+    animate(this.root.querySelector(".timer"), { scale: [0.8, 1], opacity: [0, 1] }, {
       type: "spring",
-      stiffness: 350,
+      stiffness: 300,
       damping: 20,
     });
   }
@@ -236,7 +237,7 @@ export class KidsTimer extends KidsElement {
       this.removeAttribute("running");
       this.dispatchEvent(new CustomEvent("kids-complete", { bubbles: true }));
       this.render();
-      this.motionAnimate(".timer", { scale: [1, 1.1, 1] }, { duration: 0.5 });
+      animate(this.root.querySelector(".timer"), { scale: [1, 1.1, 1] }, { duration: 0.5 });
       return;
     }
 

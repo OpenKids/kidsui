@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-tooltip> — A playful tooltip that appears on hover.
@@ -121,17 +122,17 @@ export class KidsTooltip extends KidsElement {
       right:  { x: [-6, 0] },
     };
 
-    this.motionAnimate(tip, { opacity: [0, 1], ...(offsets[position] ?? offsets.top) }, {
+    animate(tip, { opacity: [0, 1], ...(offsets[position] ?? offsets.top) }, {
       type: "spring",
-      stiffness: 500,
-      damping: 22,
+      stiffness: 400,
+      damping: 20,
     });
   }
 
   _hide() {
     const tip = this.root.querySelector(".tip");
     if (!tip) return;
-    this.motionAnimate(tip, { opacity: 0 }, { duration: 0.15 });
+    animate(tip, { opacity: 0 }, { duration: 0.15 });
   }
 
   attributeChangedCallback() {

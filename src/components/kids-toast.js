@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-toast> — A playful notification toast that auto-dismisses.
@@ -142,9 +143,7 @@ export class KidsToast extends KidsElement {
 
     const toast = this.root.querySelector(".toast");
     if (toast) {
-      this.motionAnimate(toast, { opacity: [1, 0], x: [0, 60] }, {
-        duration: 0.25,
-      });
+      animate(toast, { opacity: [1, 0], x: [0, 60] }, { duration: 0.3 });
     }
 
     setTimeout(() => {
@@ -158,11 +157,7 @@ export class KidsToast extends KidsElement {
     this._bindEvents();
 
     if (name === "open" && this.boolAttr("open")) {
-      this.motionAnimate(".toast", { x: [60, 0], opacity: [0, 1] }, {
-        type: "spring",
-        stiffness: 400,
-        damping: 22,
-      });
+      animate(this.root.querySelector(".toast"), { x: [60, 0], opacity: [0, 1] }, { type: "spring", stiffness: 400, damping: 25 });
       this._startTimer();
     }
 

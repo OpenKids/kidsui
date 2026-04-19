@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-alert> — A friendly notification / alert banner.
@@ -113,7 +114,7 @@ export class KidsAlert extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(".alert", { opacity: [0, 1], y: [-16, 0] }, {
+    animate(this.root.querySelector(".alert"), { opacity: [0, 1], y: [-16, 0] }, {
       type: "spring",
       stiffness: 300,
       damping: 22,
@@ -130,8 +131,8 @@ export class KidsAlert extends KidsElement {
   }
 
   _dismiss() {
-    this.motionAnimate(
-      ".alert",
+    animate(
+      this.root.querySelector(".alert"),
       { opacity: [1, 0], y: [0, -16] },
       { duration: 0.25, ease: "easeIn" },
     );

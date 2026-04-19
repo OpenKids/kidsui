@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-sort-list> — A drag-to-reorder list for sequence/ordering exercises.
@@ -172,10 +173,10 @@ export class KidsSortList extends KidsElement {
   onEnter() {
     const items = Array.from(this.root.querySelectorAll(".sort-item"));
     items.forEach((item, i) => {
-      this.motionAnimate(item, { opacity: [0, 1], x: [-20, 0] }, {
+      animate(item, { opacity: [0, 1], x: [-20, 0] }, {
         type: "spring",
         stiffness: 300,
-        damping: 22,
+        damping: 20,
         delay: i * 0.06,
       });
     });
@@ -255,10 +256,10 @@ export class KidsSortList extends KidsElement {
     // Animate the moved item
     const movedEl = this.root.querySelectorAll(".sort-item")[to];
     if (movedEl) {
-      this.motionAnimate(movedEl, { scale: [0.95, 1] }, {
+      animate(movedEl, { scale: [0.95, 1] }, {
         type: "spring",
         stiffness: 400,
-        damping: 20,
+        damping: 15,
       });
     }
   }
@@ -282,7 +283,7 @@ export class KidsSortList extends KidsElement {
     }));
 
     if (!isCorrect) {
-      this.motionAnimate(".sort-list", { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.4 });
+      animate(this.root.querySelector(".sort-list"), { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.4 });
     }
 
     return isCorrect;

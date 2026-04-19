@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-toggle> — A playful on/off toggle switch.
@@ -134,10 +135,10 @@ export class KidsToggle extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(".track", { scale: [0, 1] }, {
+    animate(this.root.querySelector(".track"), { scale: [0, 1] }, {
       type: "spring",
       stiffness: 400,
-      damping: 18,
+      damping: 15,
     });
     // Set initial thumb position without animation
     this._setThumbPosition(false);
@@ -207,10 +208,10 @@ export class KidsToggle extends KidsElement {
     const x = checked ? (travel[size] ?? 22) : 0;
 
     if (animated && this._thumb) {
-      this.motionAnimate(this._thumb, { x }, {
+      animate(this._thumb, { x }, {
         type: "spring",
-        stiffness: 500,
-        damping: 25,
+        stiffness: 600,
+        damping: 20,
       });
     } else if (this._thumb) {
       this._thumb.style.transform = `translateX(${x}px)`;

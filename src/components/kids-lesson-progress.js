@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-lesson-progress> — Visual progress tracker for lessons/courses.
@@ -145,10 +146,10 @@ export class KidsLessonProgress extends KidsElement {
   onEnter() {
     const items = Array.from(this.root.querySelectorAll(".lesson"));
     items.forEach((item, i) => {
-      this.motionAnimate(item, { opacity: [0, 1], x: [-15, 0] }, {
+      animate(item, { opacity: [0, 1], x: [-15, 0] }, {
         type: "spring",
         stiffness: 300,
-        damping: 22,
+        damping: 20,
         delay: i * 0.06,
       });
     });

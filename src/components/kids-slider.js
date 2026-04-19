@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-slider> — A playful range slider.
@@ -147,10 +148,10 @@ export class KidsSlider extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".track-container", { scaleX: [0, 1], opacity: [0, 1] }, {
+    animate(this.root.querySelector(".track-container"), { scaleX: [0, 1], opacity: [0, 1] }, {
       type: "spring",
       stiffness: 300,
-      damping: 25,
+      damping: 20,
     });
   }
 

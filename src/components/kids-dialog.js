@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-dialog> — A playful modal dialog / pop-up.
@@ -175,10 +176,10 @@ export class KidsDialog extends KidsElement {
     this._bindEvents();
 
     if (name === "open" && this.boolAttr("open")) {
-      this.motionAnimate(".dialog", { scale: [0.8, 1], opacity: [0, 1] }, {
+      animate(this.root.querySelector(".dialog"), { scale: [0.8, 1], opacity: [0, 1] }, {
         type: "spring",
-        stiffness: 400,
-        damping: 22,
+        stiffness: 300,
+        damping: 20,
       });
     }
   }

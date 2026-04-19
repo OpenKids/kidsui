@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-choice-card> — A selectable card for multiple-choice options.
@@ -166,9 +167,9 @@ export class KidsChoiceCard extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".choice", { scale: [0.9, 1], opacity: [0, 1] }, {
+    animate(this.root.querySelector(".choice"), { scale: [0.9, 1], opacity: [0, 1] }, {
       type: "spring",
-      stiffness: 400,
+      stiffness: 300,
       damping: 20,
     });
   }
@@ -204,14 +205,14 @@ export class KidsChoiceCard extends KidsElement {
     this._bindEvents();
 
     if (name === "correct" && this.boolAttr("correct")) {
-      this.motionAnimate(".choice", { scale: [1, 1.05, 1] }, {
-        duration: 0.4,
+      animate(this.root.querySelector(".choice"), { scale: [1, 1.05, 1] }, {
+        duration: 0.3,
       });
     }
 
     if (name === "incorrect" && this.boolAttr("incorrect")) {
-      this.motionAnimate(".choice", { x: [0, -8, 8, -6, 6, 0] }, {
-        duration: 0.5,
+      animate(this.root.querySelector(".choice"), { x: [0, -8, 8, -6, 6, 0] }, {
+        duration: 0.4,
       });
     }
   }

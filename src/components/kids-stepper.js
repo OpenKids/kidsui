@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-stepper> — A playful step indicator for multi-step flows.
@@ -141,7 +142,7 @@ export class KidsStepper extends KidsElement {
   onEnter() {
     const circles = Array.from(this.root.querySelectorAll(".circle"));
     circles.forEach((circle, i) => {
-      this.motionAnimate(circle, { scale: [0, 1], opacity: [0, 1] }, {
+      animate(circle, { scale: [0, 1], opacity: [0, 1] }, {
         type: "spring",
         stiffness: 400,
         damping: 18,

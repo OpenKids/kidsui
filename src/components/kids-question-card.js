@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-question-card> — A container card for quiz/exercise questions.
@@ -182,10 +183,10 @@ export class KidsQuestionCard extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".question-card", { opacity: [0, 1], y: [25, 0] }, {
+    animate(this.root.querySelector(".question-card"), { opacity: [0, 1], y: [25, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
+      damping: 20,
     });
   }
 
@@ -195,9 +196,9 @@ export class KidsQuestionCard extends KidsElement {
     if (name === "status") {
       const status = this.attr("status", "unanswered");
       if (status === "correct") {
-        this.motionAnimate(".question-card", { scale: [1, 1.03, 1] }, { duration: 0.4 });
+        animate(this.root.querySelector(".question-card"), { scale: [1, 1.03, 1] }, { duration: 0.4 });
       } else if (status === "incorrect") {
-        this.motionAnimate(".question-card", { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.5 });
+        animate(this.root.querySelector(".question-card"), { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.5 });
       }
     }
   }

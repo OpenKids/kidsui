@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-radio> — A playful radio button.
@@ -111,10 +112,10 @@ export class KidsRadio extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".outer", { scale: [0, 1] }, {
+    animate(this.root.querySelector(".outer"), { scale: [0, 1] }, {
       type: "spring",
       stiffness: 400,
-      damping: 18,
+      damping: 15,
     });
     // Set initial inner dot state
     if (this.boolAttr("checked")) {
@@ -161,10 +162,10 @@ export class KidsRadio extends KidsElement {
       // Animate inner dot
       const inner = this.root.querySelector(".inner");
       if (inner) {
-        this.motionAnimate(inner, { scale: checked ? 1 : 0 }, {
+        animate(inner, { scale: checked ? 1 : 0 }, {
           type: "spring",
           stiffness: 500,
-          damping: 18,
+          damping: 15,
         });
       }
       return;

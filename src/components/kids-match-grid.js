@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-match-grid> — An interactive matching exercise where kids connect pairs.
@@ -145,7 +146,7 @@ export class KidsMatchGrid extends KidsElement {
   onEnter() {
     const items = Array.from(this.root.querySelectorAll(".item"));
     items.forEach((item, i) => {
-      this.motionAnimate(item, { opacity: [0, 1], scale: [0.9, 1] }, {
+      animate(item, { opacity: [0, 1], scale: [0.9, 1] }, {
         type: "spring",
         stiffness: 400,
         damping: 22,
@@ -218,7 +219,7 @@ export class KidsMatchGrid extends KidsElement {
     if (!correct) {
       // Shake incorrect items using saved refs
       selectedItems.forEach((item) => {
-        this.motionAnimate(item, { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.4 });
+        animate(item, { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.4 });
       });
     }
 

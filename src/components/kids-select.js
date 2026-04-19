@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-select> — A playful dropdown select menu.
@@ -167,10 +168,10 @@ export class KidsSelect extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".trigger", { scale: [0.9, 1], opacity: [0, 1] }, {
+    animate(this.root.querySelector(".trigger"), { scale: [0.9, 1], opacity: [0, 1] }, {
       type: "spring",
-      stiffness: 400,
-      damping: 22,
+      stiffness: 300,
+      damping: 20,
     });
   }
 
@@ -199,8 +200,10 @@ export class KidsSelect extends KidsElement {
       if (this._open) {
         const dropdown = this.root.querySelector(".dropdown");
         if (dropdown) {
-          this.motionAnimate(dropdown, { opacity: [0, 1], y: [-8, 0] }, {
-            duration: 0.2,
+          animate(dropdown, { opacity: [0, 1], y: [-8, 0] }, {
+            type: "spring",
+            stiffness: 400,
+            damping: 20,
           });
         }
       }

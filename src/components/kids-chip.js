@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-chip> — A small interactive tag/chip that can be removed.
@@ -110,10 +111,10 @@ export class KidsChip extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(".chip", { scale: [0, 1.1, 1] }, {
+    animate(this.root.querySelector(".chip"), { scale: [0, 1.1, 1] }, {
       type: "spring",
-      stiffness: 500,
-      damping: 16,
+      stiffness: 400,
+      damping: 15,
     });
   }
 
@@ -124,14 +125,14 @@ export class KidsChip extends KidsElement {
     if (!chip) return;
 
     chip.addEventListener("pointerenter", () => {
-      this.motionAnimate(".chip", { scale: 1.06 }, {
-        type: "spring", stiffness: 400, damping: 18,
+      animate(this.root.querySelector(".chip"), { scale: 1.06 }, {
+        type: "spring", stiffness: 400, damping: 15,
       });
     });
 
     chip.addEventListener("pointerleave", () => {
-      this.motionAnimate(".chip", { scale: 1 }, {
-        type: "spring", stiffness: 400, damping: 18,
+      animate(this.root.querySelector(".chip"), { scale: 1 }, {
+        type: "spring", stiffness: 400, damping: 15,
       });
     });
 
@@ -150,9 +151,8 @@ export class KidsChip extends KidsElement {
   }
 
   _remove() {
-    this.motionAnimate(".chip", { scale: [1, 0], opacity: [1, 0] }, {
+    animate(this.root.querySelector(".chip"), { scale: [1, 0], opacity: [1, 0] }, {
       duration: 0.2,
-      ease: "easeIn",
     });
     setTimeout(() => {
       this.dispatchEvent(

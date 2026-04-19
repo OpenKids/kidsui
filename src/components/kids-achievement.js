@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-achievement> — A playful achievement/badge unlock notification.
@@ -162,15 +163,15 @@ export class KidsAchievement extends KidsElement {
     this._bindEvents();
 
     if (name === "open" && this.boolAttr("open")) {
-      this.motionAnimate(".badge", { scale: [0, 1.2, 1], rotate: ["0deg", "10deg", "0deg"] }, {
+      animate(this.root.querySelector(".badge"), { scale: [0, 1.2, 1], rotate: ["0deg", "10deg", "0deg"] }, {
         type: "spring",
-        stiffness: 300,
+        stiffness: 400,
         damping: 12,
       });
-      this.motionAnimate(".achievement", { scale: [0.5, 1], opacity: [0, 1] }, {
+      animate(this.root.querySelector(".achievement"), { scale: [0.5, 1], opacity: [0, 1] }, {
         type: "spring",
-        stiffness: 350,
-        damping: 18,
+        stiffness: 250,
+        damping: 15,
       });
     }
   }

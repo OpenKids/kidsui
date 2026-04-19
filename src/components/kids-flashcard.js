@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-flashcard> — A flippable flashcard for study/review.
@@ -103,11 +104,7 @@ export class KidsFlashcard extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".card-container", { scale: [0.85, 1], opacity: [0, 1] }, {
-      type: "spring",
-      stiffness: 350,
-      damping: 20,
-    });
+    animate(this.root.querySelector(".card-container"), { scale: [0.85, 1], opacity: [0, 1] }, { type: "spring", stiffness: 300, damping: 20 });
   }
 
   connectedCallback() {

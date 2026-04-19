@@ -1,4 +1,3 @@
-import { animate } from "motion";
 import { themeStyles } from "./theme";
 
 /**
@@ -6,7 +5,6 @@ import { themeStyles } from "./theme";
  *
  * Provides:
  * - Shadow DOM with shared theme tokens
- * - Convenience animation helpers wrapping Motion's `animate()`
  * - Lifecycle hooks for entrance / exit animations
  * - Attribute-to-property reflection helpers
  */
@@ -28,13 +26,10 @@ export class KidsElement extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    // Queue entrance animation for next frame so the DOM is painted first.
-    requestAnimationFrame(() => {
-      if (!this._entered) {
-        this._entered = true;
-        this.onEnter();
-      }
-    });
+    if (!this._entered) {
+      this._entered = true;
+      this.onEnter();
+    }
   }
 
   disconnectedCallback() {
@@ -62,28 +57,11 @@ export class KidsElement extends HTMLElement {
   }
 
   /* ------------------------------------------------------------------ */
-  /*  Animation helpers                                                  */
+  /*  Animation lifecycle                                                */
   /* ------------------------------------------------------------------ */
 
   /**
-   * Animate one or more elements inside the shadow root.
-   * Thin wrapper around Motion's `animate()` so components don't
-   * need to import it directly.
-   *
-   * Named `motionAnimate` to avoid conflict with `HTMLElement.animate()`.
-   */
-  motionAnimate(target, keyframes, options) {
-    // If `target` is a CSS selector, scope it to the shadow root.
-    const resolved =
-      typeof target === "string"
-        ? Array.from(this.root.querySelectorAll(target))
-        : target;
-
-    return animate(resolved, keyframes, options);
-  }
-
-  /**
-   * Called once the component is first connected and painted.
+   * Called once the component is first connected.
    * Override in subclasses to add entrance animations.
    */
   onEnter() {

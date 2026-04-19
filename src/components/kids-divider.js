@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-divider> — A playful separator with optional label.
@@ -107,10 +108,10 @@ export class KidsDivider extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(".divider", { opacity: [0, 1], scaleX: [0, 1] }, {
+    animate(this.root.querySelector(".divider"), { opacity: [0, 1], scaleX: [0, 1] }, {
       type: "spring",
-      stiffness: 200,
-      damping: 22,
+      stiffness: 300,
+      damping: 20,
     });
   }
 

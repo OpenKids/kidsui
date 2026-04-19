@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-accordion> — A playful collapsible accordion panel.
@@ -37,10 +38,10 @@ export class KidsAccordion extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".accordion", { opacity: [0, 1], y: [10, 0] }, {
+    animate(this.root.querySelector(".accordion"), { opacity: [0, 1], y: [10, 0] }, {
       type: "spring",
       stiffness: 300,
-      damping: 22,
+      damping: 20,
     });
   }
 
@@ -187,7 +188,7 @@ export class KidsAccordionItem extends KidsElement {
     if (this.boolAttr("open")) {
       const content = this.root.querySelector(".content");
       if (content) {
-        this.motionAnimate(content, { opacity: [0, 1] }, { duration: 0.2 });
+        animate(content, { opacity: [0, 1] }, { duration: 0.2 });
       }
     }
   }

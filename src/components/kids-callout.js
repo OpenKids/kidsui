@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-callout> — A playful highlighted info/tip/warning box for lessons.
@@ -85,7 +86,7 @@ export class KidsCallout extends KidsElement {
   }
 
   onEnter() {
-    this.motionAnimate(".callout", { opacity: [0, 1], x: [-20, 0] }, {
+    animate(this.root.querySelector(".callout"), { opacity: [0, 1], x: [-20, 0] }, {
       type: "spring",
       stiffness: 300,
       damping: 22,

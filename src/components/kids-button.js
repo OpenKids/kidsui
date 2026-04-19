@@ -1,4 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
+import { animate } from "motion";
 
 /**
  * <kids-button> — A playful, bouncy button.
@@ -108,7 +109,7 @@ export class KidsButton extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate("button", { scale: [0, 1] }, {
+    animate(this.root.querySelector("button"), { scale: [0, 1] }, {
       type: "spring",
       stiffness: 400,
       damping: 18,
@@ -126,7 +127,7 @@ export class KidsButton extends KidsElement {
 
     btn.addEventListener("pointerenter", () => {
       if (this.boolAttr("disabled")) return;
-      this.motionAnimate("button", { scale: 1.07 }, {
+      animate(this.root.querySelector("button"), { scale: 1.07 }, {
         type: "spring",
         stiffness: 500,
         damping: 15,
@@ -134,7 +135,7 @@ export class KidsButton extends KidsElement {
     });
 
     btn.addEventListener("pointerleave", () => {
-      this.motionAnimate("button", { scale: 1 }, {
+      animate(this.root.querySelector("button"), { scale: 1 }, {
         type: "spring",
         stiffness: 500,
         damping: 15,
@@ -143,7 +144,7 @@ export class KidsButton extends KidsElement {
 
     btn.addEventListener("pointerdown", () => {
       if (this.boolAttr("disabled")) return;
-      this.motionAnimate("button", { scale: 0.92 }, {
+      animate(this.root.querySelector("button"), { scale: 0.92 }, {
         type: "spring",
         stiffness: 600,
         damping: 20,
@@ -151,7 +152,7 @@ export class KidsButton extends KidsElement {
     });
 
     btn.addEventListener("pointerup", () => {
-      this.motionAnimate("button", { scale: 1.07 }, {
+      animate(this.root.querySelector("button"), { scale: 1.07 }, {
         type: "spring",
         stiffness: 500,
         damping: 12,

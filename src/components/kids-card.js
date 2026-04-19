@@ -1,4 +1,4 @@
-import { stagger } from "motion";
+import { animate, stagger } from "motion";
 import { KidsElement } from "../core/kids-element.js";
 
 /**
@@ -86,10 +86,10 @@ export class KidsCard extends KidsElement {
   /* ---- animations ---- */
 
   onEnter() {
-    this.motionAnimate(
-      ".card",
-      { opacity: [0, 1], y: [30, 0] },
-      { type: "spring", stiffness: 260, damping: 20, delay: stagger(0.08) },
+    animate(
+      this.root.querySelector(".card"),
+      { scale: [0.9, 1], opacity: [0, 1] },
+      { type: "spring", stiffness: 300, damping: 20 },
     );
   }
 
@@ -104,18 +104,18 @@ export class KidsCard extends KidsElement {
       if (!card) return;
 
       card.addEventListener("pointerenter", () => {
-        this.motionAnimate(".card", { scale: 1.03, y: -4 }, {
+        animate(this.root.querySelector(".card"), { scale: 1.03, y: -4 }, {
           type: "spring",
           stiffness: 400,
-          damping: 20,
+          damping: 15,
         });
       });
 
       card.addEventListener("pointerleave", () => {
-        this.motionAnimate(".card", { scale: 1, y: 0 }, {
+        animate(this.root.querySelector(".card"), { scale: 1, y: 0 }, {
           type: "spring",
           stiffness: 400,
-          damping: 20,
+          damping: 15,
         });
       });
     }
