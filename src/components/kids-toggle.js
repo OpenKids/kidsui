@@ -119,6 +119,9 @@ export class KidsToggle extends KidsElement {
 
     if (!this._track) return;
 
+    // Ensure the thumb has a concrete starting transform before first toggle.
+    this._setThumbPosition(false);
+
     // Press: squish the thumb when track is pressed
     press(this._track, (element) => {
       if (this.boolAttr("disabled")) return () => {};
