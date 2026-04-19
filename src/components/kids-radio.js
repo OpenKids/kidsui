@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, press } from "motion";
 
 /**
  * <kids-radio> — A playful radio button.
@@ -101,6 +101,25 @@ export class KidsRadio extends KidsElement {
     this.setAttribute("role", "radio");
 
     this._outer = this.root.querySelector(".outer");
+
+    // Press: squish effect on the outer ring
+    press(this, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
+
+      animate(this._outer, { scale: 0.85 }, {
+        type: "spring",
+        stiffness: 500,
+        damping: 20,
+      });
+
+      return () => {
+        animate(this._outer, { scale: 1 }, {
+          type: "spring",
+          stiffness: 400,
+          damping: 15,
+        });
+      };
+    });
 
     this.addEventListener("click", () => this._select());
     this.addEventListener("keydown", (e) => {

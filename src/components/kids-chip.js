@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, hover } from "motion";
 
 /**
  * <kids-chip> — A small interactive tag/chip that can be removed.
@@ -124,16 +124,16 @@ export class KidsChip extends KidsElement {
     const chip = this.root.querySelector(".chip");
     if (!chip) return;
 
-    chip.addEventListener("pointerenter", () => {
-      animate(this.root.querySelector(".chip"), { scale: 1.06 }, {
+    hover(chip, (element) => {
+      animate(element, { scale: 1.06 }, {
         type: "spring", stiffness: 400, damping: 15,
       });
-    });
 
-    chip.addEventListener("pointerleave", () => {
-      animate(this.root.querySelector(".chip"), { scale: 1 }, {
-        type: "spring", stiffness: 400, damping: 15,
-      });
+      return () => {
+        animate(element, { scale: 1 }, {
+          type: "spring", stiffness: 400, damping: 15,
+        });
+      };
     });
 
     chip.addEventListener("click", (e) => {

@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, press } from "motion";
 
 /**
  * <kids-checkbox> — A playful animated checkbox.
@@ -117,6 +117,25 @@ export class KidsCheckbox extends KidsElement {
     this.setAttribute("role", "checkbox");
 
     this._box = this.root.querySelector(".box");
+
+    // Press: squish effect on the box
+    press(this, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
+
+      animate(this._box, { scale: 0.85 }, {
+        type: "spring",
+        stiffness: 500,
+        damping: 20,
+      });
+
+      return () => {
+        animate(this._box, { scale: 1 }, {
+          type: "spring",
+          stiffness: 400,
+          damping: 15,
+        });
+      };
+    });
 
     this.addEventListener("click", () => this._toggle());
     this.addEventListener("keydown", (e) => {

@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, press } from "motion";
 
 /**
  * <kids-toggle> — A playful on/off toggle switch.
@@ -118,6 +118,25 @@ export class KidsToggle extends KidsElement {
     this._thumb = this.root.querySelector(".thumb");
 
     if (!this._track) return;
+
+    // Press: squish the thumb when track is pressed
+    press(this._track, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
+
+      animate(element, { scale: 0.95 }, {
+        type: "spring",
+        stiffness: 500,
+        damping: 20,
+      });
+
+      return () => {
+        animate(element, { scale: 1 }, {
+          type: "spring",
+          stiffness: 400,
+          damping: 15,
+        });
+      };
+    });
 
     this._track.addEventListener("click", () => this._toggle());
     this._track.addEventListener("keydown", (e) => {

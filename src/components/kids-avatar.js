@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, hover } from "motion";
 
 /**
  * <kids-avatar> — A circular avatar with initials or image.
@@ -99,11 +99,13 @@ export class KidsAvatar extends KidsElement {
     const avatar = this.root.querySelector(".avatar");
     if (!avatar) return;
 
-    avatar.addEventListener("pointerenter", () => {
-      animate(this.root.querySelector(".avatar"), { rotate: [0, -8, 8, -4, 0] }, {
+    hover(avatar, (element) => {
+      const animation = animate(element, { rotate: [0, -8, 8, -4, 0] }, {
         duration: 0.5,
         ease: "easeInOut",
       });
+
+      return () => animation.stop();
     });
   }
 

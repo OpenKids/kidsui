@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, hover } from "motion";
 
 /**
  * <kids-textarea> — A playful multi-line text input.
@@ -107,6 +107,25 @@ export class KidsTextarea extends KidsElement {
   _bindEvents() {
     const textarea = this.root.querySelector("textarea");
     if (!textarea) return;
+
+    // Hover: subtle lift effect
+    hover(textarea, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
+
+      animate(element, { y: -2 }, {
+        type: "spring",
+        stiffness: 400,
+        damping: 20,
+      });
+
+      return () => {
+        animate(element, { y: 0 }, {
+          type: "spring",
+          stiffness: 400,
+          damping: 20,
+        });
+      };
+    });
 
     textarea.addEventListener("input", () => {
       this.dispatchEvent(new CustomEvent("kids-input", {

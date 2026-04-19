@@ -1,5 +1,5 @@
 import { KidsElement } from "../core/kids-element.js";
-import { animate } from "motion";
+import { animate, press } from "motion";
 
 /**
  * <kids-choice-card> — A selectable card for multiple-choice options.
@@ -182,6 +182,25 @@ export class KidsChoiceCard extends KidsElement {
   _bindEvents() {
     const choice = this.root.querySelector(".choice");
     if (!choice) return;
+
+    // Press: squish effect when pressed
+    press(choice, (element) => {
+      if (this.boolAttr("disabled")) return () => {};
+
+      animate(element, { scale: 0.95 }, {
+        type: "spring",
+        stiffness: 500,
+        damping: 20,
+      });
+
+      return () => {
+        animate(element, { scale: 1 }, {
+          type: "spring",
+          stiffness: 400,
+          damping: 15,
+        });
+      };
+    });
 
     choice.addEventListener("click", () => {
       if (this.boolAttr("disabled")) return;

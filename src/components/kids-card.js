@@ -1,4 +1,4 @@
-import { animate, stagger } from "motion";
+import { animate, hover } from "motion";
 import { KidsElement } from "../core/kids-element.js";
 
 /**
@@ -103,20 +103,20 @@ export class KidsCard extends KidsElement {
       const card = this.root.querySelector(".card");
       if (!card) return;
 
-      card.addEventListener("pointerenter", () => {
-        animate(this.root.querySelector(".card"), { scale: 1.03, y: -4 }, {
+      hover(card, (element) => {
+        animate(element, { scale: 1.03, y: -4 }, {
           type: "spring",
           stiffness: 400,
           damping: 15,
         });
-      });
 
-      card.addEventListener("pointerleave", () => {
-        animate(this.root.querySelector(".card"), { scale: 1, y: 0 }, {
-          type: "spring",
-          stiffness: 400,
-          damping: 15,
-        });
+        return () => {
+          animate(element, { scale: 1, y: 0 }, {
+            type: "spring",
+            stiffness: 400,
+            damping: 15,
+          });
+        };
       });
     }
   }
