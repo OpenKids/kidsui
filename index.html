@@ -10,130 +10,10 @@
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap"
     rel="stylesheet"
   />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-      min-height: 100vh;
-      padding: 48px 24px;
-      color: #2D2B55;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-    }
-    .subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      opacity: 0.75;
-      margin-bottom: 48px;
-    }
-    section {
-      max-width: 720px;
-      margin: 0 auto 48px;
-    }
-    section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-      border-bottom: 3px dashed #6C63FF;
-      display: inline-block;
-      padding-bottom: 4px;
-    }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    /* Interface Panel Styles */
-    .interface-panel {
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      margin-top: 8px;
-    }
-    .interface-panel h4 {
-      margin: 16px 0 12px;
-      font-size: 1rem;
-      color: #6C63FF;
-    }
-    .interface-panel h4:first-child {
-      margin-top: 0;
-    }
-    .props-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    .props-table th {
-      text-align: left;
-      padding: 8px;
-      background: rgba(108, 99, 255, 0.1);
-      border-radius: 6px 6px 0 0;
-      font-weight: 800;
-    }
-    .props-table td {
-      padding: 8px;
-      border-bottom: 1px solid rgba(108, 99, 255, 0.1);
-    }
-    .props-table code {
-      background: rgba(108, 99, 255, 0.15);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.85em;
-    }
-    .animation-list {
-      margin: 0;
-      padding-left: 20px;
-    }
-    .animation-list li {
-      margin: 6px 0;
-    }
-
-    /* Code Panel Styles */
-    .code-panel {
-      padding: 16px;
-      background: #2D2B55;
-      border-radius: 12px;
-      margin-top: 8px;
-      overflow-x: auto;
-    }
-    .code-panel pre {
-      margin: 0;
-      font-family: 'Fira Code', 'Consolas', monospace;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: #f8f8f2;
-    }
-    .code-panel code {
-      font-family: 'Fira Code', 'Consolas', monospace;
-    }
-    /* Syntax highlighting colors */
-    .code-panel pre .tag { color: #FF79C6; }
-    .code-panel pre .attr { color: #50FA7B; }
-    .code-panel pre .val { color: #F1FA8C; }
-    .code-panel pre .comment { color: #6272A4; }
-  </style>
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <!-- Playground styles -->
+  <link rel="stylesheet" href="playground.css" />
 </head>
 <body>
   <div class="logo-container">
@@ -194,7 +74,7 @@
       </kids-tab>
       <kids-tab label="Code">
         <div class="code-panel">
-          <pre><code>&lt;!-- Basic usage --&gt;
+          <pre><code class="language-html">&lt;!-- Basic usage --&gt;
 &lt;kids-button variant="primary"&gt;Click Me!&lt;/kids-button&gt;
 
 &lt;!-- Different variants --&gt;
@@ -678,6 +558,20 @@
     </div>
   </section>
 
+  <!-- Prism.js for syntax highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
   <script type="module" src="/src/index.js"></script>
+  <script>
+    // Highlight code when tabs are switched
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initial highlight after a short delay to ensure custom elements are ready
+      setTimeout(() => {
+        if (window.Prism) {
+          Prism.highlightAll();
+        }
+      }, 100);
+    });
+  </script>
 </body>
 </html>
