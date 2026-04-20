@@ -13,11 +13,11 @@
   <!-- Prism.js for syntax highlighting -->
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
   <!-- Playground styles -->
-  <link rel="stylesheet" href="playground.css" />
+  <link rel="stylesheet" href="./playground.css" />
 </head>
 <body>
   <div class="logo-container">
-    <img src="logo.svg" alt="KidsUI Logo" class="logo" />
+    <img src="./logo.svg" alt="KidsUI Logo" class="logo" />
   </div>
   <h1>KidsUI Playground</h1>
   <p class="subtitle">A playful, animation-rich Web Component library for kids</p>
@@ -2655,7 +2655,8 @@
   <!-- Prism.js for syntax highlighting -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
-  <script type="module" src="/src/index.js"></script>
+  <!-- KidsUI Library -->
+  <script type="module" src="./dist/kidsui.js"></script>
   <script>
     // Highlight code when tabs are switched
     document.addEventListener('DOMContentLoaded', () => {
