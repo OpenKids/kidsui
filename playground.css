@@ -43,14 +43,14 @@ html {
   width: 80px;
   height: 80px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 body {
   font-family: 'Nunito', sans-serif;
   background: transparent;
   min-height: 100vh;
-  padding: 48px 24px;
+  padding: 0 24px;
+  padding-top: 24px;
   color: #2D2B55;
 }
 
@@ -211,6 +211,31 @@ section h2 {
   margin: 6px 0;
 }
 
+/* Footer Styles */
+.footer {
+  text-align: center;
+  padding: 24px;
+  margin-top: 48px;
+  border-top: 2px dashed var(--kids-primary-200, #bae6fd);
+}
+
+.footer-text {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: var(--kids-gray-600, #4b5563);
+  font-size: 14px;
+}
+
+.footer-link {
+  color: var(--kids-primary-600, #0284c7);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
 /* Code Panel Styles */
 .code-panel {
   padding: 16px;
@@ -247,7 +272,8 @@ pre[class*="language-"] {
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   body {
-    padding: 24px 16px;
+    padding: 0 16px;
+    padding-top: 24px;
   }
 
   h1 {
@@ -318,7 +344,8 @@ pre[class*="language-"] {
 /* Extra small screens */
 @media (max-width: 480px) {
   body {
-    padding: 16px 12px;
+    padding: 0 12px;
+    padding-top: 16px;
   }
 
   h1 {
