@@ -10,535 +10,2663 @@
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap"
     rel="stylesheet"
   />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-      min-height: 100vh;
-      padding: 48px 24px;
-      color: #2D2B55;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-    }
-    .subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      opacity: 0.75;
-      margin-bottom: 48px;
-    }
-    section {
-      max-width: 720px;
-      margin: 0 auto 48px;
-    }
-    section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-      border-bottom: 3px dashed #6C63FF;
-      display: inline-block;
-      padding-bottom: 4px;
-    }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-  </style>
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <!-- Playground styles -->
+  <link rel="stylesheet" href="./playground.css" />
 </head>
 <body>
+  <div class="logo-container">
+    <img src="./logo.svg" alt="KidsUI Logo" class="logo" />
+  </div>
   <h1>KidsUI Playground</h1>
   <p class="subtitle">A playful, animation-rich Web Component library for kids</p>
 
   <!-- Buttons -->
   <section>
     <h2>kids-button</h2>
-    <div class="row">
-      <kids-button variant="primary">Click Me!</kids-button>
-      <kids-button variant="secondary">Hello!</kids-button>
-      <kids-button variant="accent" size="lg">Big Button</kids-button>
-      <kids-button variant="warning" size="sm">Tiny</kids-button>
-      <kids-button disabled>Disabled</kids-button>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-button variant="primary">Click Me!</kids-button>
+          <kids-button variant="secondary">Hello!</kids-button>
+          <kids-button variant="accent" size="lg">Big Button</kids-button>
+          <kids-button variant="warning" size="sm">Tiny</kids-button>
+          <kids-button disabled>Disabled</kids-button>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Button style: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code></td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Button size: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the button interaction</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Pops in with spring scale</li>
+            <li><strong>Hover:</strong> Gentle scale-up + shadow lift</li>
+            <li><strong>Press:</strong> Squishes down with spring</li>
+            <li><strong>Focus:</strong> Ring pulse</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic usage --&gt;
+&lt;kids-button variant="primary"&gt;Click Me!&lt;/kids-button&gt;
+
+&lt;!-- Different variants --&gt;
+&lt;kids-button variant="secondary"&gt;Hello!&lt;/kids-button&gt;
+&lt;kids-button variant="accent" size="lg"&gt;Big Button&lt;/kids-button&gt;
+&lt;kids-button variant="warning" size="sm"&gt;Tiny&lt;/kids-button&gt;
+
+&lt;!-- Disabled state --&gt;
+&lt;kids-button disabled&gt;Disabled&lt;/kids-button&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Cards -->
   <section>
     <h2>kids-card</h2>
-    <div class="grid">
-      <kids-card hoverable>
-        <span slot="header">Awesome Card</span>
-        This card has a spring entrance animation and lifts on hover. Try it!
-      </kids-card>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="grid" style="padding: 16px 0;">
+          <kids-card hoverable>
+            <span slot="header">Awesome Card</span>
+            This card has a spring entrance animation and lifts on hover. Try it!
+          </kids-card>
+          <kids-card variant="outlined" hoverable>
+            <span slot="header">Outlined</span>
+            A card with an outlined style, great for secondary content.
+            <span slot="footer">
+              <kids-button variant="secondary" size="sm">Learn More</kids-button>
+            </span>
+          </kids-card>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Card style: <code>default</code>, <code>outlined</code></td>
+              </tr>
+              <tr>
+                <td><code>hoverable</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Adds lift effect on hover</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>(default)</code></td><td>Main card content</td></tr>
+              <tr><td><code>header</code></td><td>Card header area</td></tr>
+              <tr><td><code>footer</code></td><td>Card footer area</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Fades + slides up with spring</li>
+            <li><strong>Hover:</strong> Lifts up + shadow grows</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic card with hover effect --&gt;
+&lt;kids-card hoverable&gt;
+  &lt;span slot="header"&gt;Card Title&lt;/span&gt;
+  Card content goes here!
+&lt;/kids-card&gt;
 
-      <kids-card variant="outlined" hoverable>
-        <span slot="header">Outlined</span>
-        A card with an outlined style, great for secondary content.
-        <span slot="footer">
-          <kids-button variant="secondary" size="sm">Learn More</kids-button>
-        </span>
-      </kids-card>
-    </div>
+&lt;!-- Outlined card with footer --&gt;
+&lt;kids-card variant="outlined"&gt;
+  &lt;span slot="header"&gt;Outlined Card&lt;/span&gt;
+  Secondary content
+  &lt;span slot="footer"&gt;
+    &lt;kids-button variant="secondary" size="sm"&gt;Action&lt;/kids-button&gt;
+  &lt;/span&gt;
+&lt;/kids-card&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Badges -->
   <section>
     <h2>kids-badge</h2>
-    <div class="row">
-      <kids-badge variant="primary">New!</kids-badge>
-      <kids-badge variant="secondary" animate="pulse">Pulse</kids-badge>
-      <kids-badge variant="accent" animate="wiggle">Wiggle</kids-badge>
-      <kids-badge variant="warning" animate="bounce">Bounce</kids-badge>
-      <kids-badge variant="info">Info</kids-badge>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-badge variant="primary">New!</kids-badge>
+          <kids-badge variant="secondary" animate="pulse">Pulse</kids-badge>
+          <kids-badge variant="accent" animate="wiggle">Wiggle</kids-badge>
+          <kids-badge variant="warning" animate="bounce">Bounce</kids-badge>
+          <kids-badge variant="info">Info</kids-badge>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Badge color: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code>, <code>info</code></td>
+              </tr>
+              <tr>
+                <td><code>animate</code></td>
+                <td>string</td>
+                <td>"none"</td>
+                <td>Animation: <code>none</code>, <code>pulse</code>, <code>wiggle</code>, <code>bounce</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Pops in with spring</li>
+            <li><strong>Pulse:</strong> Continuous scale animation</li>
+            <li><strong>Wiggle:</strong> Rotating wiggle motion</li>
+            <li><strong>Bounce:</strong> Vertical bounce animation</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Static badge --&gt;
+&lt;kids-badge variant="primary"&gt;New!&lt;/kids-badge&gt;
+
+&lt;!-- Animated badges --&gt;
+&lt;kids-badge variant="secondary" animate="pulse"&gt;Pulse&lt;/kids-badge&gt;
+&lt;kids-badge variant="accent" animate="wiggle"&gt;Wiggle&lt;/kids-badge&gt;
+&lt;kids-badge variant="warning" animate="bounce"&gt;Bounce&lt;/kids-badge&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Toggles -->
   <section>
     <h2>kids-toggle</h2>
-    <div class="row">
-      <kids-toggle variant="primary" checked>Sound</kids-toggle>
-      <kids-toggle variant="secondary">Music</kids-toggle>
-      <kids-toggle variant="accent" size="lg" checked>Dark Mode</kids-toggle>
-      <kids-toggle variant="primary" size="sm">Tiny</kids-toggle>
-      <kids-toggle disabled>Disabled</kids-toggle>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-toggle variant="primary" checked>Sound</kids-toggle>
+          <kids-toggle variant="secondary">Music</kids-toggle>
+          <kids-toggle variant="accent" size="lg" checked>Dark Mode</kids-toggle>
+          <kids-toggle variant="primary" size="sm">Tiny</kids-toggle>
+          <kids-toggle disabled>Disabled</kids-toggle>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>checked</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether the toggle is on</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the toggle</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Color: <code>primary</code>, <code>secondary</code>, <code>accent</code></td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Size: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring scale-in</li>
+            <li><strong>Toggle:</strong> Thumb slides with spring physics</li>
+            <li><strong>Press:</strong> Track squish effect</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic toggle --&gt;
+&lt;kids-toggle variant="primary"&gt;Sound&lt;/kids-toggle&gt;
+
+&lt;!-- Pre-checked toggle --&gt;
+&lt;kids-toggle checked&gt;Enabled&lt;/kids-toggle&gt;
+
+&lt;!-- Large accent toggle --&gt;
+&lt;kids-toggle variant="accent" size="lg"&gt;Dark Mode&lt;/kids-toggle&gt;
+
+&lt;!-- Listen for changes --&gt;
+&lt;script&gt;
+  document.querySelector('kids-toggle').addEventListener('kids-toggle', (e) => {
+    console.log('Toggled:', e.detail.checked);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Inputs -->
   <section>
     <h2>kids-input</h2>
-    <div class="row" style="flex-direction: column; align-items: stretch;">
-      <kids-input placeholder="What's your name?" size="md"></kids-input>
-      <kids-input placeholder="Type something..." variant="outlined" size="md"></kids-input>
-      <div class="row">
-        <kids-input placeholder="Small" size="sm"></kids-input>
-        <kids-input placeholder="Large!" size="lg"></kids-input>
-      </div>
-      <kids-input placeholder="Can't touch this" disabled></kids-input>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px 0;">
+          <div class="row">
+            <kids-input placeholder="What's your name?" size="md"></kids-input>
+            <kids-input placeholder="Type something..." variant="outlined" size="md"></kids-input>
+          </div>
+          <div class="row">
+            <kids-input placeholder="Small" size="sm"></kids-input>
+            <kids-input placeholder="Large!" size="lg"></kids-input>
+          </div>
+          <kids-input placeholder="Can't touch this" disabled></kids-input>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>placeholder</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Placeholder text</td>
+              </tr>
+              <tr>
+                <td><code>value</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Current value</td>
+              </tr>
+              <tr>
+                <td><code>type</code></td>
+                <td>string</td>
+                <td>"text"</td>
+                <td>Input type: <code>text</code>, <code>password</code>, <code>number</code>, <code>email</code></td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the input</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Style: <code>default</code>, <code>outlined</code></td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Size: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring slide-up + fade</li>
+            <li><strong>Focus:</strong> Border color + gentle scale-up</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic input --&gt;
+&lt;kids-input placeholder="What's your name?"&gt;&lt;/kids-input&gt;
+
+&lt;!-- Outlined variant --&gt;
+&lt;kids-input variant="outlined"&gt;&lt;/kids-input&gt;
+
+&lt;!-- Different sizes --&gt;
+&lt;kids-input size="sm"&gt;&lt;/kids-input&gt;
+&lt;kids-input size="lg"&gt;&lt;/kids-input&gt;
+
+&lt;!-- Listen for input --&gt;
+&lt;script&gt;
+  document.querySelector('kids-input').addEventListener('kids-input', (e) => {
+    console.log('Value:', e.detail.value);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Progress -->
   <section>
     <h2>kids-progress</h2>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <kids-progress value="75" variant="primary" size="md" label></kids-progress>
-      <kids-progress value="45" variant="secondary" size="lg" striped label></kids-progress>
-      <kids-progress value="90" variant="accent" size="md"></kids-progress>
-      <kids-progress value="30" variant="warning" size="sm"></kids-progress>
-      <kids-progress value="60" variant="info" size="md" striped></kids-progress>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px 0;">
+          <kids-progress value="75" variant="primary" size="md" label></kids-progress>
+          <kids-progress value="45" variant="secondary" size="lg" striped label></kids-progress>
+          <kids-progress value="90" variant="accent" size="md"></kids-progress>
+          <kids-progress value="30" variant="warning" size="sm"></kids-progress>
+          <kids-progress value="60" variant="info" size="md" striped></kids-progress>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>value</code></td>
+                <td>number</td>
+                <td>0</td>
+                <td>Progress value (0–100)</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Color: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code>, <code>info</code></td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Height: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+              <tr>
+                <td><code>striped</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Adds animated diagonal stripes</td>
+              </tr>
+              <tr>
+                <td><code>label</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Shows percentage text</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Bar width springs from 0 to current value</li>
+            <li><strong>Value changes:</strong> Bar width springs to new value</li>
+            <li><strong>Stripes:</strong> Continuous diagonal movement</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic progress bar --&gt;
+&lt;kids-progress value="75"&gt;&lt;/kids-progress&gt;
+
+&lt;!-- With label and stripes --&gt;
+&lt;kids-progress value="60" striped label&gt;&lt;/kids-progress&gt;
+
+&lt;!-- Different sizes and variants --&gt;
+&lt;kids-progress value="45" variant="secondary" size="lg"&gt;&lt;/kids-progress&gt;
+&lt;kids-progress value="30" variant="warning" size="sm"&gt;&lt;/kids-progress&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Avatars -->
   <section>
     <h2>kids-avatar</h2>
-    <div class="row">
-      <kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" size="sm"></kids-avatar>
-      <kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka"></kids-avatar>
-      <kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Max" size="lg"></kids-avatar>
-      <kids-avatar variant="primary" size="xl">JD</kids-avatar>
-      <kids-avatar variant="accent">AB</kids-avatar>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" size="sm"></kids-avatar>
+          <kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka"></kids-avatar>
+          <kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Max" size="lg"></kids-avatar>
+          <kids-avatar variant="primary" size="xl">JD</kids-avatar>
+          <kids-avatar variant="accent">AB</kids-avatar>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>src</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Image URL (shows image if provided, otherwise shows slot content)</td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Size: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Background color for initials mode: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code>, <code>info</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>(default)</code></td><td>Initials text (shown when no src)</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Pop-in with spring scale</li>
+            <li><strong>Hover:</strong> Gentle wobble</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Image avatar --&gt;
+&lt;kids-avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"&gt;&lt;/kids-avatar&gt;
+
+&lt;!-- Different sizes --&gt;
+&lt;kids-avatar src="..." size="sm"&gt;&lt;/kids-avatar&gt;
+&lt;kids-avatar src="..." size="lg"&gt;&lt;/kids-avatar&gt;
+
+&lt;!-- Initials avatar --&gt;
+&lt;kids-avatar variant="primary" size="xl"&gt;JD&lt;/kids-avatar&gt;
+&lt;kids-avatar variant="accent"&gt;AB&lt;/kids-avatar&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Alerts -->
   <section>
     <h2>kids-alert</h2>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <kids-alert variant="info">This is an informational message for kids!</kids-alert>
-      <kids-alert variant="success">Great job! You completed the task!</kids-alert>
-      <kids-alert variant="warning" dismissible>Watch out! This one can be dismissed.</kids-alert>
-      <kids-alert variant="error" dismissible>Oops! Something went wrong.</kids-alert>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 16px 0;">
+          <kids-alert variant="info">This is an informational message for kids!</kids-alert>
+          <kids-alert variant="success">Great job! You completed the task!</kids-alert>
+          <kids-alert variant="warning" dismissible>Watch out! This one can be dismissed.</kids-alert>
+          <kids-alert variant="error" dismissible>Oops! Something went wrong.</kids-alert>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"info"</td>
+                <td>Alert type: <code>info</code>, <code>success</code>, <code>warning</code>, <code>error</code></td>
+              </tr>
+              <tr>
+                <td><code>dismissible</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Shows a close button</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Slides down + fades in with spring</li>
+            <li><strong>Dismiss:</strong> Slides up + fades out, then removes from DOM</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Info alert --&gt;
+&lt;kids-alert variant="info"&gt;This is an informational message!&lt;/kids-alert&gt;
+
+&lt;!-- Success alert --&gt;
+&lt;kids-alert variant="success"&gt;Great job!&lt;/kids-alert&gt;
+
+&lt;!-- Dismissible warning --&gt;
+&lt;kids-alert variant="warning" dismissible&gt;Watch out!&lt;/kids-alert&gt;
+
+&lt;!-- Listen for dismiss --&gt;
+&lt;script&gt;
+  document.querySelector('kids-alert').addEventListener('kids-dismiss', () => {
+    console.log('Alert dismissed');
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Dividers -->
   <section>
     <h2>kids-divider</h2>
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      <kids-divider color="primary"></kids-divider>
-      <kids-divider variant="dashed" color="secondary">or</kids-divider>
-      <kids-divider variant="dotted" color="accent">Section</kids-divider>
-      <kids-divider variant="wavy" color="warning"></kids-divider>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 0;">
+          <kids-divider color="primary"></kids-divider>
+          <kids-divider variant="dashed" color="secondary">or</kids-divider>
+          <kids-divider variant="dotted" color="accent">Section</kids-divider>
+          <kids-divider variant="wavy" color="warning"></kids-divider>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"solid"</td>
+                <td>Line style: <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>wavy</code></td>
+              </tr>
+              <tr>
+                <td><code>color</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Line color: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code>, <code>info</code></td>
+              </tr>
+              <tr>
+                <td><code>spacing</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Vertical spacing: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>(default)</code></td><td>Optional center label</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Line draws in from center outward</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Simple divider --&gt;
+&lt;kids-divider color="primary"&gt;&lt;/kids-divider&gt;
+
+&lt;!-- Dashed with label --&gt;
+&lt;kids-divider variant="dashed" color="secondary"&gt;or&lt;/kids-divider&gt;
+
+&lt;!-- Wavy divider --&gt;
+&lt;kids-divider variant="wavy" color="warning"&gt;&lt;/kids-divider&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Chips -->
   <section>
     <h2>kids-chip</h2>
-    <div class="row">
-      <kids-chip variant="primary">Science</kids-chip>
-      <kids-chip variant="secondary" selected>Math</kids-chip>
-      <kids-chip variant="accent" removable>Art</kids-chip>
-      <kids-chip variant="warning" removable>Music</kids-chip>
-      <kids-chip variant="info" size="sm">Small</kids-chip>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-chip variant="primary">Science</kids-chip>
+          <kids-chip variant="secondary" selected>Math</kids-chip>
+          <kids-chip variant="accent" removable>Art</kids-chip>
+          <kids-chip variant="warning" removable>Music</kids-chip>
+          <kids-chip variant="info" size="sm">Small</kids-chip>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Color: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code>, <code>info</code></td>
+              </tr>
+              <tr>
+                <td><code>removable</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Shows a close button</td>
+              </tr>
+              <tr>
+                <td><code>selected</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Filled/active style</td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Size: <code>sm</code>, <code>md</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring pop-in</li>
+            <li><strong>Remove:</strong> Shrinks + fades out</li>
+            <li><strong>Hover:</strong> Gentle lift</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic chip --&gt;
+&lt;kids-chip variant="primary"&gt;Science&lt;/kids-chip&gt;
+
+&lt;!-- Selected chip --&gt;
+&lt;kids-chip selected&gt;Math&lt;/kids-chip&gt;
+
+&lt;!-- Removable chip --&gt;
+&lt;kids-chip removable&gt;Art&lt;/kids-chip&gt;
+
+&lt;!-- Listen for events --&gt;
+&lt;script&gt;
+  document.querySelector('kids-chip').addEventListener('kids-remove', () => {
+    console.log('Chip removed');
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Tooltips -->
   <section>
     <h2>kids-tooltip</h2>
-    <div class="row">
-      <kids-tooltip text="I'm on top!" position="top">
-        <kids-button variant="primary" size="sm">Hover me (top)</kids-button>
-      </kids-tooltip>
-      <kids-tooltip text="Down here!" position="bottom" variant="primary">
-        <kids-button variant="secondary" size="sm">Hover me (bottom)</kids-button>
-      </kids-tooltip>
-      <kids-tooltip text="To the right!" position="right" variant="secondary">
-        <kids-button variant="accent" size="sm">Hover me (right)</kids-button>
-      </kids-tooltip>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-tooltip text="I'm on top!" position="top">
+            <kids-button variant="primary" size="sm">Hover me (top)</kids-button>
+          </kids-tooltip>
+          <kids-tooltip text="Down here!" position="bottom" variant="primary">
+            <kids-button variant="secondary" size="sm">Hover me (bottom)</kids-button>
+          </kids-tooltip>
+          <kids-tooltip text="To the right!" position="right" variant="secondary">
+            <kids-button variant="accent" size="sm">Hover me (right)</kids-button>
+          </kids-tooltip>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>text</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>The tooltip text to display</td>
+              </tr>
+              <tr>
+                <td><code>position</code></td>
+                <td>string</td>
+                <td>"top"</td>
+                <td>Position: <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code></td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"dark"</td>
+                <td>Tooltip style: <code>dark</code>, <code>primary</code>, <code>secondary</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>(default)</code></td><td>The trigger element</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Show:</strong> Spring pop-in + fade from relevant direction</li>
+            <li><strong>Hide:</strong> Fade out</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Tooltip on top --&gt;
+&lt;kids-tooltip text="I'm on top!" position="top"&gt;
+  &lt;kids-button&gt;Hover me&lt;/kids-button&gt;
+&lt;/kids-tooltip&gt;
+
+&lt;!-- Different positions and variants --&gt;
+&lt;kids-tooltip text="Down here!" position="bottom" variant="primary"&gt;
+  &lt;kids-button&gt;Bottom&lt;/kids-button&gt;
+&lt;/kids-tooltip&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Spinners -->
   <section>
     <h2>kids-spinner</h2>
-    <div class="row">
-      <kids-spinner variant="primary" size="sm"></kids-spinner>
-      <kids-spinner variant="secondary"></kids-spinner>
-      <kids-spinner variant="accent" size="lg"></kids-spinner>
-      <kids-spinner variant="warning" type="dots"></kids-spinner>
-      <kids-spinner variant="info" type="dots" size="lg"></kids-spinner>
-      <kids-spinner variant="primary" type="bounce"></kids-spinner>
-      <kids-spinner variant="secondary" type="bounce" size="sm"></kids-spinner>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-spinner variant="primary" size="sm"></kids-spinner>
+          <kids-spinner variant="secondary"></kids-spinner>
+          <kids-spinner variant="accent" size="lg"></kids-spinner>
+          <kids-spinner variant="warning" type="dots"></kids-spinner>
+          <kids-spinner variant="info" type="dots" size="lg"></kids-spinner>
+          <kids-spinner variant="primary" type="bounce"></kids-spinner>
+          <kids-spinner variant="secondary" type="bounce" size="sm"></kids-spinner>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Size: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Color: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code>, <code>info</code></td>
+              </tr>
+              <tr>
+                <td><code>type</code></td>
+                <td>string</td>
+                <td>"spin"</td>
+                <td>Animation style: <code>spin</code>, <code>dots</code>, <code>bounce</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Spin:</strong> Classic rotating ring</li>
+            <li><strong>Dots:</strong> Three bouncing dots</li>
+            <li><strong>Bounce:</strong> Single ball bouncing</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Classic spinner --&gt;
+&lt;kids-spinner&gt;&lt;/kids-spinner&gt;
+
+&lt;!-- Dots animation --&gt;
+&lt;kids-spinner type="dots"&gt;&lt;/kids-spinner&gt;
+
+&lt;!-- Bouncing ball --&gt;
+&lt;kids-spinner type="bounce" size="lg"&gt;&lt;/kids-spinner&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Radio Buttons -->
   <section>
     <h2>kids-radio</h2>
-    <div class="row">
-      <kids-radio name="fruit" value="apple" variant="primary" checked>Apple</kids-radio>
-      <kids-radio name="fruit" value="banana" variant="primary">Banana</kids-radio>
-      <kids-radio name="fruit" value="cherry" variant="primary">Cherry</kids-radio>
-    </div>
-    <div class="row" style="margin-top: 12px;">
-      <kids-radio name="color" value="red" variant="secondary">Red</kids-radio>
-      <kids-radio name="color" value="green" variant="accent">Green</kids-radio>
-      <kids-radio name="color" value="blue" variant="primary" disabled>Blue (disabled)</kids-radio>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <div class="row">
+            <kids-radio name="fruit" value="apple" variant="primary" checked>Apple</kids-radio>
+            <kids-radio name="fruit" value="banana" variant="primary">Banana</kids-radio>
+            <kids-radio name="fruit" value="cherry" variant="primary">Cherry</kids-radio>
+          </div>
+          <div class="row" style="margin-top: 12px;">
+            <kids-radio name="color" value="red" variant="secondary">Red</kids-radio>
+            <kids-radio name="color" value="green" variant="accent">Green</kids-radio>
+            <kids-radio name="color" value="blue" variant="primary" disabled>Blue (disabled)</kids-radio>
+          </div>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>name</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Radio group name</td>
+              </tr>
+              <tr>
+                <td><code>value</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>The value this radio represents</td>
+              </tr>
+              <tr>
+                <td><code>checked</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether this radio is selected</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the radio</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Color: <code>primary</code>, <code>secondary</code>, <code>accent</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring scale-in</li>
+            <li><strong>Check:</strong> Inner dot pops in with spring</li>
+            <li><strong>Press:</strong> Squish effect on the outer ring</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Radio group --&gt;
+&lt;kids-radio name="fruit" value="apple" checked&gt;Apple&lt;/kids-radio&gt;
+&lt;kids-radio name="fruit" value="banana"&gt;Banana&lt;/kids-radio&gt;
+&lt;kids-radio name="fruit" value="cherry"&gt;Cherry&lt;/kids-radio&gt;
+
+&lt;!-- Listen for selection --&gt;
+&lt;script&gt;
+  document.querySelectorAll('kids-radio').forEach(radio => {
+    radio.addEventListener('kids-radio-change', (e) => {
+      console.log('Selected:', e.detail.value);
+    });
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Checkboxes -->
   <section>
     <h2>kids-checkbox</h2>
-    <div class="row">
-      <kids-checkbox variant="primary" checked>I agree to have fun</kids-checkbox>
-      <kids-checkbox variant="secondary">Subscribe to cookies</kids-checkbox>
-      <kids-checkbox variant="accent">Enable rainbows</kids-checkbox>
-      <kids-checkbox variant="primary" disabled>Disabled</kids-checkbox>
-    </div>
-  </section>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-checkbox variant="primary" checked>I agree to have fun</kids-checkbox>
+          <kids-checkbox variant="secondary">Subscribe to cookies</kids-checkbox>
+          <kids-checkbox variant="accent">Enable rainbows</kids-checkbox>
+          <kids-checkbox variant="primary" disabled>Disabled</kids-checkbox>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>checked</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether the checkbox is checked</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the checkbox</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Color: <code>primary</code>, <code>secondary</code>, <code>accent</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring scale-in</li>
+            <li><strong>Check:</strong> Box fills + checkmark draws in with spring</li>
+            <li><strong>Uncheck:</strong> Box empties + checkmark shrinks out</li>
+            <li><strong>Press:</strong> Squish effect on the box</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic checkbox --&gt;
+&lt;kids-checkbox&gt;I agree to terms&lt;/kids-checkbox&gt;
 
-  <!-- ========================================== -->
-  <!--  STAGE 1 — General UI Components            -->
-  <!-- ========================================== -->
+&lt;!-- Pre-checked with variant --&gt;
+&lt;kids-checkbox variant="accent" checked&gt;Enable rainbows&lt;/kids-checkbox&gt;
+
+&lt;!-- Listen for changes --&gt;
+&lt;script&gt;
+  document.querySelector('kids-checkbox').addEventListener('kids-checkbox-change', (e) => {
+    console.log('Checked:', e.detail.checked);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
+  </section>
 
   <!-- Textarea -->
   <section>
     <h2>kids-textarea</h2>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <kids-textarea placeholder="Write your story here..." rows="3"></kids-textarea>
-      <kids-textarea placeholder="Outlined style" variant="outlined" rows="2"></kids-textarea>
-      <kids-textarea placeholder="Can't edit this" disabled rows="2"></kids-textarea>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 16px 0;">
+          <kids-textarea placeholder="Write your story here..." rows="3"></kids-textarea>
+          <kids-textarea placeholder="Outlined style" variant="outlined" rows="2"></kids-textarea>
+          <kids-textarea placeholder="Can't edit this" disabled rows="2"></kids-textarea>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>placeholder</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Placeholder text</td>
+              </tr>
+              <tr>
+                <td><code>rows</code></td>
+                <td>number</td>
+                <td>4</td>
+                <td>Number of visible rows</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the textarea</td>
+              </tr>
+              <tr>
+                <td><code>value</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Initial text content</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Style: <code>default</code>, <code>outlined</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Fade in + slide up</li>
+            <li><strong>Focus:</strong> Border glow</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic textarea --&gt;
+&lt;kids-textarea placeholder="Write your story..." rows="3"&gt;&lt;/kids-textarea&gt;
+
+&lt;!-- Outlined variant --&gt;
+&lt;kids-textarea variant="outlined" rows="2"&gt;&lt;/kids-textarea&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Select -->
   <section>
     <h2>kids-select</h2>
-    <div class="row">
-      <kids-select placeholder="Pick a fruit!">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="cherry">Cherry</option>
-        <option value="grape">Grape</option>
-      </kids-select>
-      <kids-select placeholder="Pick a color!" variant="outlined">
-        <option value="red">Red</option>
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-      </kids-select>
-      <kids-select placeholder="Disabled" disabled>
-        <option value="x">Can't pick</option>
-      </kids-select>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-select placeholder="Pick a fruit!">
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="cherry">Cherry</option>
+            <option value="grape">Grape</option>
+          </kids-select>
+          <kids-select placeholder="Pick a color!" variant="outlined">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+          </kids-select>
+          <kids-select placeholder="Disabled" disabled>
+            <option value="x">Can't pick</option>
+          </kids-select>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>placeholder</code></td>
+                <td>string</td>
+                <td>"Pick one!"</td>
+                <td>Text when nothing selected</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the select</td>
+              </tr>
+              <tr>
+                <td><code>value</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Currently selected value</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Style: <code>default</code>, <code>outlined</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Children</h4>
+          <p><code>&lt;option value="..."&gt;Label&lt;/option&gt;</code> — Option elements</p>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring scale-in</li>
+            <li><strong>Dropdown open:</strong> Slide down + fade</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic select --&gt;
+&lt;kids-select placeholder="Pick a fruit!"&gt;
+  &lt;option value="apple"&gt;Apple&lt;/option&gt;
+  &lt;option value="banana"&gt;Banana&lt;/option&gt;
+&lt;/kids-select&gt;
+
+&lt;!-- Outlined variant --&gt;
+&lt;kids-select variant="outlined"&gt;...&lt;/kids-select&gt;
+
+&lt;!-- Listen for selection --&gt;
+&lt;script&gt;
+  document.querySelector('kids-select').addEventListener('kids-change', (e) => {
+    console.log('Selected:', e.detail.value, e.detail.label);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
-  <!-- Tabs -->
+  <!-- Tabs Component -->
   <section>
     <h2>kids-tabs</h2>
-    <kids-tabs active="0">
-      <kids-tab label="Story">Once upon a time, in a land far away...</kids-tab>
-      <kids-tab label="Quiz">How many legs does a spider have?</kids-tab>
-      <kids-tab label="Activity">Draw your favorite animal!</kids-tab>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-tabs active="0">
+            <kids-tab label="Story">Once upon a time, in a land far away...</kids-tab>
+            <kids-tab label="Quiz">How many legs does a spider have?</kids-tab>
+            <kids-tab label="Activity">Draw your favorite animal!</kids-tab>
+          </kids-tabs>
+          <div style="margin-top: 16px;">
+            <kids-tabs active="0" variant="pills">
+              <kids-tab label="Easy">Start with the basics.</kids-tab>
+              <kids-tab label="Medium">A bit more challenging!</kids-tab>
+              <kids-tab label="Hard">For experts only!</kids-tab>
+            </kids-tabs>
+          </div>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>active</code></td>
+                <td>number</td>
+                <td>0</td>
+                <td>Index of the active tab</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Style: <code>default</code>, <code>pills</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Tab indicator:</strong> Slides with spring physics</li>
+            <li><strong>Panel:</strong> Fades in on switch</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Default tabs --&gt;
+&lt;kids-tabs active="0"&gt;
+  &lt;kids-tab label="Story"&gt;Once upon a time...&lt;/kids-tab&gt;
+  &lt;kids-tab label="Quiz"&gt;Question here&lt;/kids-tab&gt;
+  &lt;kids-tab label="Activity"&gt;Draw something!&lt;/kids-tab&gt;
+&lt;/kids-tabs&gt;
+
+&lt;!-- Pills variant --&gt;
+&lt;kids-tabs variant="pills"&gt;...&lt;/kids-tabs&gt;</code></pre>
+        </div>
+      </kids-tab>
     </kids-tabs>
-    <div style="margin-top: 16px;">
-      <kids-tabs active="0" variant="pills">
-        <kids-tab label="Easy">Start with the basics.</kids-tab>
-        <kids-tab label="Medium">A bit more challenging!</kids-tab>
-        <kids-tab label="Hard">For experts only!</kids-tab>
-      </kids-tabs>
-    </div>
   </section>
 
   <!-- Dialog -->
   <section>
     <h2>kids-dialog</h2>
-    <div class="row">
-      <kids-button variant="primary" onclick="document.getElementById('demo-dialog').setAttribute('open','')">
-        Open Dialog
-      </kids-button>
-    </div>
-    <kids-dialog id="demo-dialog" title="Hello There!">
-      <p>This is a playful dialog box. You can put anything inside!</p>
-      <span slot="footer">
-        <kids-button variant="secondary" size="sm" onclick="document.getElementById('demo-dialog').removeAttribute('open')">
-          Close
-        </kids-button>
-        <kids-button variant="primary" size="sm" onclick="document.getElementById('demo-dialog').removeAttribute('open')">
-          Got it!
-        </kids-button>
-      </span>
-    </kids-dialog>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-button variant="primary" onclick="document.getElementById('demo-dialog').setAttribute('open','')">
+            Open Dialog
+          </kids-button>
+        </div>
+        <kids-dialog id="demo-dialog" title="Hello There!">
+          <p>This is a playful dialog box. You can put anything inside!</p>
+          <span slot="footer">
+            <kids-button variant="secondary" size="sm" onclick="document.getElementById('demo-dialog').removeAttribute('open')">
+              Close
+            </kids-button>
+            <kids-button variant="primary" size="sm" onclick="document.getElementById('demo-dialog').removeAttribute('open')">
+              Got it!
+            </kids-button>
+          </span>
+        </kids-dialog>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>open</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Controls visibility</td>
+              </tr>
+              <tr>
+                <td><code>title</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Dialog heading text</td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Dialog width: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>(default)</code></td><td>Dialog body content</td></tr>
+              <tr><td><code>footer</code></td><td>Action buttons area</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Open:</strong> Backdrop fades, dialog springs in with scale</li>
+            <li><strong>Close:</strong> Fades out</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Dialog trigger --&gt;
+&lt;kids-button onclick="document.getElementById('my-dialog').setAttribute('open','')"&gt;
+  Open Dialog
+&lt;/kids-button&gt;
+
+&lt;!-- Dialog definition --&gt;
+&lt;kids-dialog id="my-dialog" title="Hello!"&gt;
+  &lt;p&gt;Dialog content goes here.&lt;/p&gt;
+  &lt;span slot="footer"&gt;
+    &lt;kids-button onclick="document.getElementById('my-dialog').removeAttribute('open')"&gt;
+      Close
+    &lt;/kids-button&gt;
+  &lt;/span&gt;
+&lt;/kids-dialog&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Toast -->
   <section>
     <h2>kids-toast</h2>
-    <div class="row">
-      <kids-button variant="primary" size="sm" onclick="document.getElementById('demo-toast').setAttribute('open','')">
-        Show Toast
-      </kids-button>
-    </div>
-    <kids-toast id="demo-toast" variant="success" duration="3000" position="top-right">
-      Great job! You earned a star!
-    </kids-toast>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-button variant="primary" size="sm" onclick="document.getElementById('demo-toast').setAttribute('open','')">
+            Show Toast
+          </kids-button>
+        </div>
+        <kids-toast id="demo-toast" variant="success" duration="3000" position="top-right">
+          Great job! You earned a star!
+        </kids-toast>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"info"</td>
+                <td>Toast type: <code>info</code>, <code>success</code>, <code>warning</code>, <code>error</code></td>
+              </tr>
+              <tr>
+                <td><code>duration</code></td>
+                <td>number</td>
+                <td>4000</td>
+                <td>Auto-dismiss time in ms (0 to disable)</td>
+              </tr>
+              <tr>
+                <td><code>position</code></td>
+                <td>string</td>
+                <td>"top-right"</td>
+                <td>Position: <code>top-right</code>, <code>top-left</code>, <code>bottom-right</code>, <code>bottom-left</code>, <code>top-center</code>, <code>bottom-center</code></td>
+              </tr>
+              <tr>
+                <td><code>open</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Controls visibility</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Enter:</strong> Slides in from edge + spring bounce</li>
+            <li><strong>Exit:</strong> Slides out + fades</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Toast trigger --&gt;
+&lt;kids-button onclick="document.getElementById('my-toast').setAttribute('open','')"&gt;
+  Show Toast
+&lt;/kids-button&gt;
+
+&lt;!-- Toast definition --&gt;
+&lt;kids-toast id="my-toast" variant="success" duration="3000" position="top-right"&gt;
+  Great job! You earned a star!
+&lt;/kids-toast&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Slider -->
   <section>
     <h2>kids-slider</h2>
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <kids-slider label="Volume" value="60" variant="primary"></kids-slider>
-      <kids-slider label="Difficulty" value="30" min="0" max="100" variant="secondary"></kids-slider>
-      <kids-slider label="Speed" value="80" variant="accent"></kids-slider>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px 0;">
+          <kids-slider label="Volume" value="60" variant="primary"></kids-slider>
+          <kids-slider label="Difficulty" value="30" min="0" max="100" variant="secondary"></kids-slider>
+          <kids-slider label="Speed" value="80" variant="accent"></kids-slider>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>min</code></td>
+                <td>number</td>
+                <td>0</td>
+                <td>Minimum value</td>
+              </tr>
+              <tr>
+                <td><code>max</code></td>
+                <td>number</td>
+                <td>100</td>
+                <td>Maximum value</td>
+              </tr>
+              <tr>
+                <td><code>value</code></td>
+                <td>number</td>
+                <td>50</td>
+                <td>Current value</td>
+              </tr>
+              <tr>
+                <td><code>step</code></td>
+                <td>number</td>
+                <td>1</td>
+                <td>Step increment</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the slider</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Track color: <code>primary</code>, <code>secondary</code>, <code>accent</code></td>
+              </tr>
+              <tr>
+                <td><code>label</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Optional label text (shows value)</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Track grows in width</li>
+            <li><strong>Thumb:</strong> Spring bounce on grab/release</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic slider --&gt;
+&lt;kids-slider label="Volume" value="60"&gt;&lt;/kids-slider&gt;
+
+&lt;!-- Custom range --&gt;
+&lt;kids-slider label="Difficulty" value="30" min="0" max="100"&gt;&lt;/kids-slider&gt;
+
+&lt;!-- Different variant --&gt;
+&lt;kids-slider variant="accent"&gt;&lt;/kids-slider&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Accordion -->
   <section>
     <h2>kids-accordion</h2>
-    <kids-accordion>
-      <kids-accordion-item label="What is the sun?" open>
-        The sun is a giant ball of hot gas that gives us light and warmth!
-      </kids-accordion-item>
-      <kids-accordion-item label="Why is the sky blue?">
-        Sunlight is scattered by molecules in the atmosphere, and blue light scatters the most!
-      </kids-accordion-item>
-      <kids-accordion-item label="How do fish breathe?">
-        Fish use gills to extract oxygen from water, just like we use lungs to breathe air!
-      </kids-accordion-item>
-    </kids-accordion>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-accordion>
+            <kids-accordion-item label="What is the sun?" open>
+              The sun is a giant ball of hot gas that gives us light and warmth!
+            </kids-accordion-item>
+            <kids-accordion-item label="Why is the sky blue?">
+              Sunlight is scattered by molecules in the atmosphere, and blue light scatters the most!
+            </kids-accordion-item>
+            <kids-accordion-item label="How do fish breathe?">
+              Fish use gills to extract oxygen from water, just like we use lungs to breathe air!
+            </kids-accordion-item>
+          </kids-accordion>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>&lt;kids-accordion&gt; Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>multiple</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Allow multiple items open at once</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>&lt;kids-accordion-item&gt; Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>label</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Header text</td>
+              </tr>
+              <tr>
+                <td><code>open</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether expanded</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Expand/collapse:</strong> Smooth height + fade</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic accordion --&gt;
+&lt;kids-accordion&gt;
+  &lt;kids-accordion-item label="Question 1?" open&gt;
+    Answer goes here!
+  &lt;/kids-accordion-item&gt;
+  &lt;kids-accordion-item label="Question 2?"&gt;
+    Another answer!
+  &lt;/kids-accordion-item&gt;
+&lt;/kids-accordion&gt;
+
+&lt;!-- Allow multiple open --&gt;
+&lt;kids-accordion multiple&gt;...&lt;/kids-accordion&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Stepper -->
   <section>
     <h2>kids-stepper</h2>
-    <kids-stepper
-      steps='["Introduction","Vocabulary","Practice","Quiz"]'
-      active="2"
-    ></kids-stepper>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-stepper
+            steps='["Introduction","Vocabulary","Practice","Quiz"]'
+            active="2"
+          ></kids-stepper>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>steps</code></td>
+                <td>JSON array</td>
+                <td>[]</td>
+                <td>Array of step labels</td>
+              </tr>
+              <tr>
+                <td><code>active</code></td>
+                <td>number</td>
+                <td>0</td>
+                <td>Current step index (0-based)</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Style: <code>default</code>, <code>compact</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Steps stagger in</li>
+            <li><strong>Step completion:</strong> Checkmark pops with spring</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic stepper --&gt;
+&lt;kids-stepper
+  steps='["Step 1","Step 2","Step 3"]'
+  active="1"
+&gt;&lt;/kids-stepper&gt;
+
+&lt;!-- Compact variant --&gt;
+&lt;kids-stepper variant="compact" steps='["A","B","C"]' active="0"&gt;
+&lt;/kids-stepper&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Skeleton -->
   <section>
     <h2>kids-skeleton</h2>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <div class="row">
-        <kids-skeleton variant="circle" width="48px" height="48px"></kids-skeleton>
-        <div style="flex: 1;">
-          <kids-skeleton variant="text" lines="2"></kids-skeleton>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 16px 0;">
+          <div class="row">
+            <kids-skeleton variant="circle" width="48px" height="48px"></kids-skeleton>
+            <div style="flex: 1;">
+              <kids-skeleton variant="text" lines="2"></kids-skeleton>
+            </div>
+          </div>
+          <kids-skeleton variant="rect" height="100px"></kids-skeleton>
+          <kids-skeleton variant="card" height="140px"></kids-skeleton>
         </div>
-      </div>
-      <kids-skeleton variant="rect" height="100px"></kids-skeleton>
-      <kids-skeleton variant="card" height="140px"></kids-skeleton>
-    </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"text"</td>
+                <td>Shape: <code>text</code>, <code>circle</code>, <code>rect</code>, <code>card</code></td>
+              </tr>
+              <tr>
+                <td><code>width</code></td>
+                <td>string</td>
+                <td>"100%"</td>
+                <td>CSS width</td>
+              </tr>
+              <tr>
+                <td><code>height</code></td>
+                <td>string</td>
+                <td>varies</td>
+                <td>CSS height (defaults vary by variant)</td>
+              </tr>
+              <tr>
+                <td><code>lines</code></td>
+                <td>number</td>
+                <td>1</td>
+                <td>Number of text lines (only for variant="text")</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Shimmer:</strong> Continuous wave animation across the placeholder</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Text lines --&gt;
+&lt;kids-skeleton variant="text" lines="2"&gt;&lt;/kids-skeleton&gt;
+
+&lt;!-- Circle avatar placeholder --&gt;
+&lt;kids-skeleton variant="circle" width="48px" height="48px"&gt;&lt;/kids-skeleton&gt;
+
+&lt;!-- Card placeholder --&gt;
+&lt;kids-skeleton variant="card" height="140px"&gt;&lt;/kids-skeleton&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Choice Card -->
   <section>
     <h2>kids-choice-card</h2>
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      <kids-choice-card value="a">Mercury is the closest planet to the Sun</kids-choice-card>
-      <kids-choice-card value="b" selected>Venus is the hottest planet</kids-choice-card>
-      <kids-choice-card value="c" correct>Earth supports life</kids-choice-card>
-      <kids-choice-card value="d" incorrect>Jupiter is the smallest planet</kids-choice-card>
-    </div>
-  </section>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px 0;">
+          <kids-choice-card value="a">Mercury is the closest planet to the Sun</kids-choice-card>
+          <kids-choice-card value="b" selected>Venus is the hottest planet</kids-choice-card>
+          <kids-choice-card value="c" correct>Earth supports life</kids-choice-card>
+          <kids-choice-card value="d" incorrect>Jupiter is the smallest planet</kids-choice-card>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>value</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>The option value</td>
+              </tr>
+              <tr>
+                <td><code>selected</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether currently selected</td>
+              </tr>
+              <tr>
+                <td><code>correct</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Show as correct answer (green)</td>
+              </tr>
+              <tr>
+                <td><code>incorrect</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Show as wrong answer (red shake)</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the card</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Layout: <code>default</code>, <code>image</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring pop-in</li>
+            <li><strong>Select:</strong> Bounce + border glow</li>
+            <li><strong>Correct:</strong> Green pulse + checkmark</li>
+            <li><strong>Incorrect:</strong> Red shake</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic choice card --&gt;
+&lt;kids-choice-card value="a"&gt;
+  Option A text
+&lt;/kids-choice-card&gt;
 
-  <!-- ========================================== -->
-  <!--  STAGE 2 — Tutorial & Course Components     -->
-  <!-- ========================================== -->
+&lt;!-- Selected state --&gt;
+&lt;kids-choice-card value="b" selected&gt;Option B&lt;/kids-choice-card&gt;
+
+&lt;!-- Answer states --&gt;
+&lt;kids-choice-card value="c" correct&gt;Correct answer&lt;/kids-choice-card&gt;
+&lt;kids-choice-card value="d" incorrect&gt;Wrong answer&lt;/kids-choice-card&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
+  </section>
 
   <!-- Callout -->
   <section>
     <h2>kids-callout</h2>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <kids-callout variant="tip">Always read the question carefully before answering!</kids-callout>
-      <kids-callout variant="fun-fact">Honey never spoils. Archaeologists found 3,000-year-old honey that was still edible!</kids-callout>
-      <kids-callout variant="warning">Don't forget to save your progress!</kids-callout>
-      <kids-callout variant="remember">The order of operations is: Parentheses, Exponents, Multiplication, Division, Addition, Subtraction.</kids-callout>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 16px 0;">
+          <kids-callout variant="tip">Always read the question carefully before answering!</kids-callout>
+          <kids-callout variant="fun-fact">Honey never spoils. Archaeologists found 3,000-year-old honey that was still edible!</kids-callout>
+          <kids-callout variant="warning">Don't forget to save your progress!</kids-callout>
+          <kids-callout variant="remember">The order of operations is: Parentheses, Exponents, Multiplication, Division, Addition, Subtraction.</kids-callout>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"tip"</td>
+                <td>Callout type: <code>tip</code>, <code>info</code>, <code>warning</code>, <code>fun-fact</code>, <code>remember</code></td>
+              </tr>
+              <tr>
+                <td><code>title</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Custom heading (overrides default)</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Slides in from left with spring</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Tip callout --&gt;
+&lt;kids-callout variant="tip"&gt;
+  Always read carefully!
+&lt;/kids-callout&gt;
+
+&lt;!-- Fun fact --&gt;
+&lt;kids-callout variant="fun-fact"&gt;
+  Honey never spoils!
+&lt;/kids-callout&gt;
+
+&lt;!-- Custom title --&gt;
+&lt;kids-callout variant="info" title="Custom Heading"&gt;
+  Content here
+&lt;/kids-callout&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Lesson Nav -->
   <section>
     <h2>kids-lesson-nav</h2>
-    <kids-lesson-nav current="3" total="5" show-progress></kids-lesson-nav>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-lesson-nav current="3" total="5" show-progress></kids-lesson-nav>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>current</code></td>
+                <td>number</td>
+                <td>1</td>
+                <td>Current lesson number (1-based)</td>
+              </tr>
+              <tr>
+                <td><code>total</code></td>
+                <td>number</td>
+                <td>1</td>
+                <td>Total number of lessons</td>
+              </tr>
+              <tr>
+                <td><code>prev-label</code></td>
+                <td>string</td>
+                <td>"Back"</td>
+                <td>Label for previous button</td>
+              </tr>
+              <tr>
+                <td><code>next-label</code></td>
+                <td>string</td>
+                <td>"Next"</td>
+                <td>Label for next button</td>
+              </tr>
+              <tr>
+                <td><code>show-progress</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Show progress text</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Slides up with spring</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Basic lesson nav --&gt;
+&lt;kids-lesson-nav current="3" total="5"&gt;&lt;/kids-lesson-nav&gt;
+
+&lt;!-- With progress indicator --&gt;
+&lt;kids-lesson-nav current="2" total="8" show-progress&gt;&lt;/kids-lesson-nav&gt;
+
+&lt;!-- Listen for navigation --&gt;
+&lt;script&gt;
+  document.querySelector('kids-lesson-nav').addEventListener('kids-next', () =&gt; {
+    console.log('Next clicked');
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Lesson Progress -->
   <section>
     <h2>kids-lesson-progress</h2>
-    <kids-lesson-progress lessons='[
-      {"title":"Welcome to Space","status":"completed"},
-      {"title":"The Solar System","status":"completed"},
-      {"title":"Stars and Galaxies","status":"current"},
-      {"title":"Black Holes","status":"locked"},
-      {"title":"Final Quiz","status":"locked"}
-    ]'></kids-lesson-progress>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-lesson-progress lessons='[
+            {"title":"Welcome to Space","status":"completed"},
+            {"title":"The Solar System","status":"completed"},
+            {"title":"Stars and Galaxies","status":"current"},
+            {"title":"Black Holes","status":"locked"},
+            {"title":"Final Quiz","status":"locked"}
+          ]'></kids-lesson-progress>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>lessons</code></td>
+                <td>JSON array</td>
+                <td>[]</td>
+                <td>Array of lesson objects with <code>title</code> and <code>status</code> (completed | current | locked)</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"list"</td>
+                <td>Layout: <code>list</code>, <code>map</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Lessons stagger in</li>
+            <li><strong>Completed:</strong> Checkmark spring pop</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Lesson progress tracker --&gt;
+&lt;kids-lesson-progress lessons='[
+  {"title":"Intro","status":"completed"},
+  {"title":"Lesson 1","status":"completed"},
+  {"title":"Lesson 2","status":"current"},
+  {"title":"Quiz","status":"locked"}
+]'&gt;&lt;/kids-lesson-progress&gt;
+
+&lt;!-- Map variant --&gt;
+&lt;kids-lesson-progress variant="map" lessons='[...]'&gt;&lt;/kids-lesson-progress&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Question Card -->
   <section>
     <h2>kids-question-card</h2>
-    <kids-question-card number="3" total="10" status="unanswered" points="5">
-      <span slot="question">Which planet is known as the Red Planet?</span>
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <kids-choice-card value="venus">Venus</kids-choice-card>
-        <kids-choice-card value="mars" selected>Mars</kids-choice-card>
-        <kids-choice-card value="jupiter">Jupiter</kids-choice-card>
-      </div>
-      <span slot="hint">Think about the color of rust!</span>
-    </kids-question-card>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-question-card number="3" total="10" status="unanswered" points="5">
+            <span slot="question">Which planet is known as the Red Planet?</span>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <kids-choice-card value="venus">Venus</kids-choice-card>
+              <kids-choice-card value="mars" selected>Mars</kids-choice-card>
+              <kids-choice-card value="jupiter">Jupiter</kids-choice-card>
+            </div>
+            <span slot="hint">Think about the color of rust!</span>
+          </kids-question-card>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>number</code></td>
+                <td>number</td>
+                <td>""</td>
+                <td>Question number</td>
+              </tr>
+              <tr>
+                <td><code>total</code></td>
+                <td>number</td>
+                <td>""</td>
+                <td>Total questions</td>
+              </tr>
+              <tr>
+                <td><code>status</code></td>
+                <td>string</td>
+                <td>"unanswered"</td>
+                <td>Status: <code>unanswered</code>, <code>correct</code>, <code>incorrect</code>, <code>skipped</code></td>
+              </tr>
+              <tr>
+                <td><code>points</code></td>
+                <td>number</td>
+                <td>""</td>
+                <td>Points value for this question</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>question</code></td><td>The question text</td></tr>
+              <tr><td><code>(default)</code></td><td>Answer options / interactive content</td></tr>
+              <tr><td><code>hint</code></td><td>Optional hint text</td></tr>
+              <tr><td><code>explanation</code></td><td>Shown after answering</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Card slides in + springs</li>
+            <li><strong>Correct:</strong> Green border glow</li>
+            <li><strong>Incorrect:</strong> Red shake</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Question card --&gt;
+&lt;kids-question-card number="3" total="10" points="5"&gt;
+  &lt;span slot="question"&gt;Which planet...?&lt;/span&gt;
+  
+  &lt;kids-choice-card value="a"&gt;Venus&lt;/kids-choice-card&gt;
+  &lt;kids-choice-card value="b"&gt;Mars&lt;/kids-choice-card&gt;
+  
+  &lt;span slot="hint"&gt;Think about...&lt;/span&gt;
+&lt;/kids-question-card&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Choice Group -->
   <section>
     <h2>kids-choice-group</h2>
-    <p style="margin-bottom: 8px; font-weight: 800;">Which animals are mammals? (select multiple)</p>
-    <kids-choice-group mode="multiple" direction="grid" columns="2">
-      <kids-choice-card value="dog">Dog</kids-choice-card>
-      <kids-choice-card value="snake">Snake</kids-choice-card>
-      <kids-choice-card value="whale">Whale</kids-choice-card>
-      <kids-choice-card value="frog">Frog</kids-choice-card>
-    </kids-choice-group>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <p style="margin-bottom: 8px; font-weight: 800;">Which animals are mammals? (select multiple)</p>
+          <kids-choice-group mode="multiple" direction="grid" columns="2">
+            <kids-choice-card value="dog">Dog</kids-choice-card>
+            <kids-choice-card value="snake">Snake</kids-choice-card>
+            <kids-choice-card value="whale">Whale</kids-choice-card>
+            <kids-choice-card value="frog">Frog</kids-choice-card>
+          </kids-choice-group>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>mode</code></td>
+                <td>string</td>
+                <td>"single"</td>
+                <td>Selection mode: <code>single</code>, <code>multiple</code></td>
+              </tr>
+              <tr>
+                <td><code>value</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Selected value(s), comma-separated for multiple</td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables all children</td>
+              </tr>
+              <tr>
+                <td><code>direction</code></td>
+                <td>string</td>
+                <td>"vertical"</td>
+                <td>Layout: <code>vertical</code>, <code>horizontal</code>, <code>grid</code></td>
+              </tr>
+              <tr>
+                <td><code>columns</code></td>
+                <td>number</td>
+                <td>2</td>
+                <td>Number of grid columns (for direction="grid")</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Children:</strong> Stagger in on entrance</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Single select (default) --&gt;
+&lt;kids-choice-group&gt;
+  &lt;kids-choice-card value="a"&gt;Option A&lt;/kids-choice-card&gt;
+  &lt;kids-choice-card value="b"&gt;Option B&lt;/kids-choice-card&gt;
+&lt;/kids-choice-group&gt;
+
+&lt;!-- Multiple select grid --&gt;
+&lt;kids-choice-group mode="multiple" direction="grid" columns="2"&gt;
+  &lt;kids-choice-card value="dog"&gt;Dog&lt;/kids-choice-card&gt;
+  &lt;kids-choice-card value="cat"&gt;Cat&lt;/kids-choice-card&gt;
+&lt;/kids-choice-group&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Empty State -->
   <section>
     <h2>kids-empty-state</h2>
-    <kids-card>
-      <kids-empty-state
-        icon="📚"
-        title="No lessons yet!"
-        message="Start your first lesson to begin your learning adventure."
-      >
-        <kids-button slot="action" variant="primary" size="sm">Start Learning</kids-button>
-      </kids-empty-state>
-    </kids-card>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-card>
+            <kids-empty-state
+              icon="📚"
+              title="No lessons yet!"
+              message="Start your first lesson to begin your learning adventure."
+            >
+              <kids-button slot="action" variant="primary" size="sm">Start Learning</kids-button>
+            </kids-empty-state>
+          </kids-card>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>icon</code></td>
+                <td>string</td>
+                <td>"🎒"</td>
+                <td>Emoji or icon character</td>
+              </tr>
+              <tr>
+                <td><code>title</code></td>
+                <td>string</td>
+                <td>"Nothing here yet!"</td>
+                <td>Heading text</td>
+              </tr>
+              <tr>
+                <td><code>message</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Description text</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>action</code></td><td>Optional CTA button/link</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Icon bounces in, text fades up</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Empty state --&gt;
+&lt;kids-empty-state
+  icon="📚"
+  title="No lessons yet!"
+  message="Start your first lesson..."
+&gt;
+  &lt;kids-button slot="action"&gt;Start Learning&lt;/kids-button&gt;
+&lt;/kids-empty-state&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Achievement -->
   <section>
     <h2>kids-achievement</h2>
-    <div class="row">
-      <kids-button variant="warning" onclick="document.getElementById('demo-achievement').setAttribute('open','')">
-        Unlock Achievement!
-      </kids-button>
-    </div>
-    <kids-achievement
-      id="demo-achievement"
-      icon="🏆"
-      title="Quiz Master!"
-      message="You scored 100% on your first try. Amazing!"
-      variant="gold"
-    ></kids-achievement>
-  </section>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-button variant="warning" onclick="document.getElementById('demo-achievement').setAttribute('open','')">
+            Unlock Achievement!
+          </kids-button>
+        </div>
+        <kids-achievement
+          id="demo-achievement"
+          icon="🏆"
+          title="Quiz Master!"
+          message="You scored 100% on your first try. Amazing!"
+          variant="gold"
+        ></kids-achievement>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>icon</code></td>
+                <td>string</td>
+                <td>"🏆"</td>
+                <td>Emoji or icon character</td>
+              </tr>
+              <tr>
+                <td><code>title</code></td>
+                <td>string</td>
+                <td>"Achievement Unlocked!"</td>
+                <td>Achievement title</td>
+              </tr>
+              <tr>
+                <td><code>message</code></td>
+                <td>string</td>
+                <td>""</td>
+                <td>Description text</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"gold"</td>
+                <td>Badge style: <code>gold</code>, <code>silver</code>, <code>bronze</code>, <code>special</code></td>
+              </tr>
+              <tr>
+                <td><code>open</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Show the achievement</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Dramatic spring pop + glow</li>
+            <li><strong>Idle:</strong> Gentle float/pulse</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Trigger button --&gt;
+&lt;kids-button onclick="document.getElementById('achievement').setAttribute('open','')"&gt;
+  Unlock!
+&lt;/kids-button&gt;
 
-  <!-- ========================================== -->
-  <!--  STAGE 3 — Quiz & Interactive Exercises     -->
-  <!-- ========================================== -->
+&lt;!-- Achievement popup --&gt;
+&lt;kids-achievement
+  id="achievement"
+  icon="🏆"
+  title="Quiz Master!"
+  message="You scored 100%!"
+  variant="gold"
+&gt;&lt;/kids-achievement&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
+  </section>
 
   <!-- Flashcard -->
   <section>
     <h2>kids-flashcard</h2>
-    <div class="grid">
-      <kids-flashcard>
-        <span slot="front">What is H₂O?</span>
-        <span slot="back">Water!</span>
-      </kids-flashcard>
-      <kids-flashcard>
-        <span slot="front">What is 7 × 8?</span>
-        <span slot="back">56</span>
-      </kids-flashcard>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="grid" style="padding: 16px 0;">
+          <kids-flashcard>
+            <span slot="front">What is H₂O?</span>
+            <span slot="back">Water!</span>
+          </kids-flashcard>
+          <kids-flashcard>
+            <span slot="front">What is 7 × 8?</span>
+            <span slot="back">56</span>
+          </kids-flashcard>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>flipped</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether showing the back side</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Size: <code>default</code>, <code>compact</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Slots</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>front</code></td><td>Front face content (question/term)</td></tr>
+              <tr><td><code>back</code></td><td>Back face content (answer/definition)</td></tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Flip:</strong> 3D Y-axis rotation with spring physics</li>
+            <li><strong>Entrance:</strong> Spring pop</li>
+            <li><strong>Hover:</strong> Subtle lift</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Flashcard --&gt;
+&lt;kids-flashcard&gt;
+  &lt;span slot="front"&gt;What is H₂O?&lt;/span&gt;
+  &lt;span slot="back"&gt;Water!&lt;/span&gt;
+&lt;/kids-flashcard&gt;
+
+&lt;!-- Compact variant --&gt;
+&lt;kids-flashcard variant="compact"&gt;...&lt;/kids-flashcard&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Match Grid -->
   <section>
     <h2>kids-match-grid</h2>
-    <kids-match-grid pairs='[
-      {"left":"Cat","right":"Meow"},
-      {"left":"Dog","right":"Woof"},
-      {"left":"Cow","right":"Moo"},
-      {"left":"Duck","right":"Quack"}
-    ]'></kids-match-grid>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <kids-match-grid pairs='[
+            {"left":"Cat","right":"Meow"},
+            {"left":"Dog","right":"Woof"},
+            {"left":"Cow","right":"Moo"},
+            {"left":"Duck","right":"Quack"}
+          ]'></kids-match-grid>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>pairs</code></td>
+                <td>JSON array</td>
+                <td>[]</td>
+                <td>Array of <code>{ left, right }</code> objects</td>
+              </tr>
+              <tr>
+                <td><code>status</code></td>
+                <td>string</td>
+                <td>"playing"</td>
+                <td>Game state: <code>playing</code>, <code>checking</code>, <code>completed</code></td>
+              </tr>
+              <tr>
+                <td><code>shuffle</code></td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>Shuffle the right-side items</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Items stagger in</li>
+            <li><strong>Match correct:</strong> Green glow + bounce</li>
+            <li><strong>Match incorrect:</strong> Red shake</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Matching exercise --&gt;
+&lt;kids-match-grid pairs='[
+  {"left":"Cat","right":"Meow"},
+  {"left":"Dog","right":"Woof"},
+  {"left":"Cow","right":"Moo"}
+]'&gt;&lt;/kids-match-grid&gt;
+
+&lt;!-- Listen for matches --&gt;
+&lt;script&gt;
+  document.querySelector('kids-match-grid').addEventListener('kids-match', (e) =&gt; {
+    console.log('Match:', e.detail.correct ? 'Correct!' : 'Try again');
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Sort List -->
   <section>
     <h2>kids-sort-list</h2>
-    <p style="margin-bottom: 8px; font-weight: 800;">Put the planets in order from the Sun:</p>
-    <kids-sort-list
-      items='["Earth","Venus","Mars","Mercury"]'
-      correct='["Mercury","Venus","Earth","Mars"]'
-    ></kids-sort-list>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div style="padding: 16px 0;">
+          <p style="margin-bottom: 8px; font-weight: 800;">Put the planets in order from the Sun:</p>
+          <kids-sort-list
+            items='["Earth","Venus","Mars","Mercury"]'
+            correct='["Mercury","Venus","Earth","Mars"]'
+          ></kids-sort-list>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>items</code></td>
+                <td>JSON array</td>
+                <td>[]</td>
+                <td>Array of items to sort</td>
+              </tr>
+              <tr>
+                <td><code>correct</code></td>
+                <td>JSON array</td>
+                <td>[]</td>
+                <td>Correct order (for checking)</td>
+              </tr>
+              <tr>
+                <td><code>status</code></td>
+                <td>string</td>
+                <td>"playing"</td>
+                <td>State: <code>playing</code>, <code>correct</code>, <code>incorrect</code></td>
+              </tr>
+              <tr>
+                <td><code>shuffle</code></td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>Shuffle items on init</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Items stagger in</li>
+            <li><strong>Drag:</strong> Item lifts with shadow</li>
+            <li><strong>Drop:</strong> Spring settle</li>
+            <li><strong>Correct:</strong> Green border</li>
+            <li><strong>Incorrect:</strong> Red shake</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Sorting exercise --&gt;
+&lt;kids-sort-list
+  items='["Earth","Venus","Mars","Mercury"]'
+  correct='["Mercury","Venus","Earth","Mars"]'
+&gt;&lt;/kids-sort-list&gt;
+
+&lt;!-- Check answer programmatically --&gt;
+&lt;script&gt;
+  const sortList = document.querySelector('kids-sort-list');
+  sortList.check(); // Returns true/false, triggers kids-check event
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Timer -->
   <section>
     <h2>kids-timer</h2>
-    <div class="row" style="gap: 32px;">
-      <kids-timer id="timer1" duration="30" variant="default"></kids-timer>
-      <kids-timer duration="120" variant="circular"></kids-timer>
-      <kids-timer duration="90" variant="compact"></kids-timer>
-    </div>
-    <div class="row" style="margin-top: 12px;">
-      <kids-button variant="accent" size="sm" onclick="document.getElementById('timer1').setAttribute('running','')">
-        Start Timer
-      </kids-button>
-      <kids-button variant="secondary" size="sm" onclick="document.getElementById('timer1').removeAttribute('running')">
-        Pause
-      </kids-button>
-      <kids-button variant="warning" size="sm" onclick="document.getElementById('timer1').reset()">
-        Reset
-      </kids-button>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="gap: 32px; padding: 16px 0;">
+          <kids-timer id="timer1" duration="30" variant="default"></kids-timer>
+          <kids-timer duration="120" variant="circular"></kids-timer>
+          <kids-timer duration="90" variant="compact"></kids-timer>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+          <kids-button variant="accent" size="sm" onclick="document.getElementById('timer1').setAttribute('running','')">
+            Start Timer
+          </kids-button>
+          <kids-button variant="secondary" size="sm" onclick="document.getElementById('timer1').removeAttribute('running')">
+            Pause
+          </kids-button>
+          <kids-button variant="warning" size="sm" onclick="document.getElementById('timer1').reset()">
+            Reset
+          </kids-button>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>duration</code></td>
+                <td>number</td>
+                <td>60</td>
+                <td>Total time in seconds</td>
+              </tr>
+              <tr>
+                <td><code>mode</code></td>
+                <td>string</td>
+                <td>"countdown"</td>
+                <td>Timer mode: <code>countdown</code>, <code>countup</code></td>
+              </tr>
+              <tr>
+                <td><code>running</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Starts/stops the timer</td>
+              </tr>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"default"</td>
+                <td>Style: <code>default</code>, <code>compact</code>, <code>circular</code></td>
+              </tr>
+              <tr>
+                <td><code>warn-at</code></td>
+                <td>number</td>
+                <td>10</td>
+                <td>Seconds remaining to show warning state</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Methods</h4>
+          <ul class="method-list">
+            <li><code>reset()</code> — Resets the timer to initial state</li>
+          </ul>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Spring pop</li>
+            <li><strong>Warning:</strong> Pulsing red glow</li>
+            <li><strong>Complete:</strong> Bounce</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Countdown timer --&gt;
+&lt;kids-timer duration="60" running&gt;&lt;/kids-timer&gt;
+
+&lt;!-- Circular variant --&gt;
+&lt;kids-timer duration="120" variant="circular"&gt;&lt;/kids-timer&gt;
+
+&lt;!-- Control timer --&gt;
+&lt;script&gt;
+  const timer = document.querySelector('kids-timer');
+  timer.setAttribute('running', '');   // Start
+  timer.removeAttribute('running');   // Pause
+  timer.reset();                      // Reset
+&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
-  <script type="module" src="/src/index.js"></script>
+  <!-- Prism.js for syntax highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-html.min.js"></script>
+  <!-- KidsUI Library -->
+  <script type="module" src="./dist/kidsui.js"></script>
+  <script>
+    // Highlight code when tabs are switched
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initial highlight after a short delay to ensure custom elements are ready
+      setTimeout(() => {
+        if (window.Prism) {
+          Prism.highlightAll();
+        }
+      }, 100);
+    });
+  </script>
 </body>
 </html>

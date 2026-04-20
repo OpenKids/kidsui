@@ -28,7 +28,8 @@ export class KidsTabs extends KidsElement {
     const active = parseInt(this.attr("active", "0"), 10);
     const variant = this.attr("variant", "default");
 
-    const tabs = Array.from(this.querySelectorAll("kids-tab"));
+    // Only select direct children kids-tab elements, not nested ones
+    const tabs = Array.from(this.children).filter(child => child.tagName === 'KIDS-TAB');
     const tabHeaders = tabs
       .map(
         (tab, i) => `
@@ -133,6 +134,11 @@ export class KidsTabs extends KidsElement {
     super.connectedCallback();
     this._updatePanels();
     this._bindEvents();
+    
+    // Ensure panels are updated after all tabs are fully connected
+    requestAnimationFrame(() => {
+      this._updatePanels();
+    });
   }
 
   onEnter() {
@@ -145,7 +151,8 @@ export class KidsTabs extends KidsElement {
 
   _updatePanels() {
     const active = parseInt(this.attr("active", "0"), 10);
-    const tabs = Array.from(this.querySelectorAll("kids-tab"));
+    // Only select direct children kids-tab elements, not nested ones
+    const tabs = Array.from(this.children).filter(child => child.tagName === 'KIDS-TAB');
     tabs.forEach((tab, i) => {
       tab.style.display = i === active ? "block" : "none";
     });
@@ -167,7 +174,8 @@ export class KidsTabs extends KidsElement {
 
     if (name === "active") {
       const index = parseInt(this.attr("active", "0"), 10);
-      const tabs = Array.from(this.querySelectorAll("kids-tab"));
+      // Only select direct children kids-tab elements
+      const tabs = Array.from(this.children).filter(child => child.tagName === 'KIDS-TAB');
       const label = tabs[index]?.getAttribute("label") || "";
 
       animate(this.root.querySelector(".tab-panel"), { opacity: [0, 1] }, { duration: 0.2 });
@@ -188,7 +196,14 @@ export class KidsTabs extends KidsElement {
  */
 export class KidsTab extends HTMLElement {
   connectedCallback() {
-    this.style.display = "none";
+    // Initial visibility is controlled by parent kids-tabs via _updatePanels()
+    // We use a small delay to ensure the parent has a chance to set us up
+    requestAnimationFrame(() => {
+      // If we still don't have an explicit display set by parent, hide by default
+      if (!this.style.display) {
+        this.style.display = "none";
+      }
+    });
   }
 }
 

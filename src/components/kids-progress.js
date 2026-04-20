@@ -96,7 +96,6 @@ export class KidsProgress extends KidsElement {
           line-height: 1;
         }
 
-        .fill.accent .label-text,
         .fill.warning .label-text {
           color: var(--kids-color-text);
         }

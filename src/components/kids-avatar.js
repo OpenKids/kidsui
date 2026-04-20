@@ -65,7 +65,7 @@ export class KidsAvatar extends KidsElement {
         /* ---- Variants (background for initials mode) ---- */
         .avatar.primary { background: var(--kids-color-primary); color: var(--kids-color-text-light); }
         .avatar.secondary { background: var(--kids-color-secondary); color: var(--kids-color-text-light); }
-        .avatar.accent { background: var(--kids-color-accent); color: var(--kids-color-text); }
+        .avatar.accent { background: var(--kids-color-accent); color: var(--kids-color-text-light); }
         .avatar.warning { background: var(--kids-color-warning); color: var(--kids-color-text); }
         .avatar.info { background: var(--kids-color-info); color: var(--kids-color-text-light); }
 
