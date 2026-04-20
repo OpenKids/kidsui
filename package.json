@@ -1,5 +1,5 @@
 {
-  "name": "kidsui",
+  "name": "@openkids/kidsui",
   "version": "0.1.0",
   "description": "A playful, animation-rich UI component library for kids — built with Web Components and Motion",
   "type": "module",
