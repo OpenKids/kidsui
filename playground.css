@@ -11,6 +11,28 @@ html {
   background: #e0c3fc;
 }
 
+.source-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 32px;
+  flex-wrap: wrap;
+}
+
+.source-badges a {
+  text-decoration: none;
+}
+
+.source-badge {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.source-badge:hover {
+  transform: scale(1.05);
+}
+
 .logo-container {
   display: flex;
   justify-content: center;
