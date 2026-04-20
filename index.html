@@ -52,6 +52,76 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
     }
+
+    /* Interface Panel Styles */
+    .interface-panel {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+    .interface-panel h4 {
+      margin: 16px 0 12px;
+      font-size: 1rem;
+      color: #6C63FF;
+    }
+    .interface-panel h4:first-child {
+      margin-top: 0;
+    }
+    .props-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .props-table th {
+      text-align: left;
+      padding: 8px;
+      background: rgba(108, 99, 255, 0.1);
+      border-radius: 6px 6px 0 0;
+      font-weight: 800;
+    }
+    .props-table td {
+      padding: 8px;
+      border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+    }
+    .props-table code {
+      background: rgba(108, 99, 255, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85em;
+    }
+    .animation-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .animation-list li {
+      margin: 6px 0;
+    }
+
+    /* Code Panel Styles */
+    .code-panel {
+      padding: 16px;
+      background: #2D2B55;
+      border-radius: 12px;
+      margin-top: 8px;
+      overflow-x: auto;
+    }
+    .code-panel pre {
+      margin: 0;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #f8f8f2;
+    }
+    .code-panel code {
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+    /* Syntax highlighting colors */
+    .code-panel pre .tag { color: #FF79C6; }
+    .code-panel pre .attr { color: #50FA7B; }
+    .code-panel pre .val { color: #F1FA8C; }
+    .code-panel pre .comment { color: #6272A4; }
   </style>
 </head>
 <body>
@@ -61,13 +131,68 @@
   <!-- Buttons -->
   <section>
     <h2>kids-button</h2>
-    <div class="row">
-      <kids-button variant="primary">Click Me!</kids-button>
-      <kids-button variant="secondary">Hello!</kids-button>
-      <kids-button variant="accent" size="lg">Big Button</kids-button>
-      <kids-button variant="warning" size="sm">Tiny</kids-button>
-      <kids-button disabled>Disabled</kids-button>
-    </div>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="Preview">
+        <div class="row" style="padding: 16px 0;">
+          <kids-button variant="primary">Click Me!</kids-button>
+          <kids-button variant="secondary">Hello!</kids-button>
+          <kids-button variant="accent" size="lg">Big Button</kids-button>
+          <kids-button variant="warning" size="sm">Tiny</kids-button>
+          <kids-button disabled>Disabled</kids-button>
+        </div>
+      </kids-tab>
+      <kids-tab label="Interface">
+        <div class="interface-panel">
+          <h4>Attributes</h4>
+          <table class="props-table">
+            <thead>
+              <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>variant</code></td>
+                <td>string</td>
+                <td>"primary"</td>
+                <td>Button style: <code>primary</code>, <code>secondary</code>, <code>accent</code>, <code>warning</code></td>
+              </tr>
+              <tr>
+                <td><code>size</code></td>
+                <td>string</td>
+                <td>"md"</td>
+                <td>Button size: <code>sm</code>, <code>md</code>, <code>lg</code></td>
+              </tr>
+              <tr>
+                <td><code>disabled</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Disables the button interaction</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Animations</h4>
+          <ul class="animation-list">
+            <li><strong>Entrance:</strong> Pops in with spring scale</li>
+            <li><strong>Hover:</strong> Gentle scale-up + shadow lift</li>
+            <li><strong>Press:</strong> Squishes down with spring</li>
+            <li><strong>Focus:</strong> Ring pulse</li>
+          </ul>
+        </div>
+      </kids-tab>
+      <kids-tab label="Code">
+        <div class="code-panel">
+          <pre><code>&lt;!-- Basic usage --&gt;
+&lt;kids-button variant="primary"&gt;Click Me!&lt;/kids-button&gt;
+
+&lt;!-- Different variants --&gt;
+&lt;kids-button variant="secondary"&gt;Hello!&lt;/kids-button&gt;
+&lt;kids-button variant="accent" size="lg"&gt;Big Button&lt;/kids-button&gt;
+&lt;kids-button variant="warning" size="sm"&gt;Tiny&lt;/kids-button&gt;
+
+&lt;!-- Disabled state --&gt;
+&lt;kids-button disabled&gt;Disabled&lt;/kids-button&gt;</code></pre>
+        </div>
+      </kids-tab>
+    </kids-tabs>
   </section>
 
   <!-- Cards -->
