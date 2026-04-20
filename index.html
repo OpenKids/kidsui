@@ -49,6 +49,43 @@
     </a>
   </div>
 
+  <!-- Installation & Usage Manual -->
+  <section class="manual-section">
+    <h2>Getting Started</h2>
+    <kids-tabs active="0" variant="pills">
+      <kids-tab label="npm Install">
+        <div class="code-panel">
+          <pre><code class="language-bash"># Install via npm
+npm install @openkids/kidsui</code></pre>
+          <p class="manual-text">Then import in your JavaScript:</p>
+          <pre><code class="language-javascript">import '@openkids/kidsui';</code></pre>
+        </div>
+      </kids-tab>
+      <kids-tab label="CDN (Easiest)">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Add this to your HTML head --&gt;
+&lt;script type="module" src="https://unpkg.com/@openkids/kidsui/dist/kidsui.js"&gt;&lt;/script&gt;</code></pre>
+          <p class="manual-text">Or download and use locally:</p>
+          <pre><code class="language-html">&lt;script type="module" src="./dist/kidsui.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </kids-tab>
+      <kids-tab label="Basic Usage">
+        <div class="code-panel">
+          <pre><code class="language-html">&lt;!-- Just use the tags! --&gt;
+&lt;kids-button variant="primary"&gt;Click me!&lt;/kids-button&gt;
+
+&lt;kids-card hoverable&gt;
+  &lt;span slot="header"&gt;My Card&lt;/span&gt;
+  Hello from KidsUI!
+&lt;/kids-card&gt;
+
+&lt;kids-badge variant="accent" animate="bounce"&gt;New!&lt;/kids-badge&gt;</code></pre>
+          <p class="manual-text">That's it! KidsUI components work like native HTML elements.</p>
+        </div>
+      </kids-tab>
+    </kids-tabs>
+  </section>
+
   <!-- Buttons -->
   <section>
     <h2>kids-button</h2>
