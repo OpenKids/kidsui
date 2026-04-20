@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100vh;
+  background: #e0c3fc;
+}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -21,7 +26,7 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  background: transparent;
   min-height: 100vh;
   padding: 48px 24px;
   color: #2D2B55;
@@ -215,4 +220,107 @@ pre[class*="language-"] {
   margin: 0 !important;
   padding: 0 !important;
   overflow: visible;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  body {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  section {
+    margin-bottom: 32px;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+  }
+
+  .row {
+    gap: 8px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Make tables scrollable on mobile */
+  .interface-panel {
+    padding: 12px;
+    overflow-x: hidden;
+  }
+
+  .props-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.85rem;
+  }
+
+  .props-table th,
+  .props-table td {
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+
+  .props-table th:last-child,
+  .props-table td:last-child {
+    min-width: 200px;
+    white-space: normal;
+  }
+
+  .code-panel {
+    padding: 12px;
+  }
+
+  .code-panel pre,
+  .code-panel code {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .props-table {
+    font-size: 0.8rem;
+  }
+
+  .props-table th,
+  .props-table td {
+    padding: 8px 10px;
+  }
+
+  .animation-list {
+    padding-left: 16px;
+  }
+
+  .animation-list li {
+    font-size: 0.9rem;
+  }
 }
