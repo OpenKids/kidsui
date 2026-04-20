@@ -129,7 +129,7 @@ export class KidsChoiceCard extends KidsElement {
         .correct .indicator {
           border-color: var(--kids-color-accent);
           background: var(--kids-color-accent);
-          color: var(--kids-color-text);
+          color: var(--kids-color-text-light);
         }
 
         .incorrect .indicator {

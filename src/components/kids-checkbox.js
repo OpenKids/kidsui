@@ -81,7 +81,7 @@ export class KidsCheckbox extends KidsElement {
         }
 
         .box.checked.accent .check svg path {
-          stroke: var(--kids-color-text);
+          stroke: var(--kids-color-text-light);
         }
 
         .label {

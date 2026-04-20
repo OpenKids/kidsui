@@ -86,7 +86,7 @@ export class KidsStepper extends KidsElement {
 
         .step.completed .circle {
           background: var(--kids-color-accent);
-          color: var(--kids-color-text);
+          color: var(--kids-color-text-light);
           box-shadow: var(--kids-shadow-sm);
         }
 

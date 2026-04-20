@@ -74,7 +74,7 @@ export class KidsChip extends KidsElement {
         /* ---- Selected (filled) ---- */
         .chip.selected.primary   { background: var(--kids-color-primary); color: var(--kids-color-text-light); }
         .chip.selected.secondary { background: var(--kids-color-secondary); color: var(--kids-color-text-light); }
-        .chip.selected.accent    { background: var(--kids-color-accent); color: var(--kids-color-text); }
+        .chip.selected.accent    { background: var(--kids-color-accent); color: var(--kids-color-text-light); }
         .chip.selected.warning   { background: var(--kids-color-warning); color: var(--kids-color-text); }
         .chip.selected.info      { background: var(--kids-color-info); color: var(--kids-color-text-light); }
 

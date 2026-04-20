@@ -74,7 +74,7 @@ export class KidsButton extends KidsElement {
         }
         button.accent {
           background: var(--kids-color-accent);
-          color: var(--kids-color-text);
+          color: var(--kids-color-text-light);
           box-shadow: var(--kids-shadow-md);
         }
         button.warning {

@@ -52,7 +52,7 @@ export class KidsBadge extends KidsElement {
         }
         .badge.accent {
           background: var(--kids-color-accent);
-          color: var(--kids-color-text);
+          color: var(--kids-color-text-light);
         }
         .badge.warning {
           background: var(--kids-color-warning);
